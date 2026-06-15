@@ -1,42 +1,29 @@
-import React from 'react'
-import Navbar    from './components/Navbar'
-import Player    from './components/Player'
-import Hero      from './components/Hero'
-import ShowsGrid  from './components/ShowsGrid'
-import Schedule  from './components/Schedule'
-import MixGrid   from './components/MixGrid'
-import Archive   from './components/Archive'
-import About     from './components/About'
-import Footer    from './components/Footer'
+import Navbar from './components/Navbar'
+import Hero from './components/Hero'
+import About from './components/About'
+import Footer from './components/Footer'
+import SongRequest from './components/SongRequest'
+import Community from './components/Collaborate'
+import Collaborate from './components/Collaborate'
 
 export default function App() {
   return (
-    <div style={{ background: '#0c0c0c', minHeight: '100vh', color: '#e8e8e8' }}>
+    <div
+      style={{
+        background: '#0A0A0A',
+        color: '#E8E8E8',
+        minHeight: '100vh',
+        fontFamily: 'Inter, sans-serif',
+      }}
+    >
       <Navbar />
-      <Player />
 
       <main>
+
         <Hero />
-
-        <section id="shows">
-          <ShowsGrid />
-        </section>
-
-        <section id="schedule">
-          <Schedule />
-        </section>
-
-        <section id="mixes">
-          <MixGrid />
-        </section>
-
-        <section id="archive">
-          <Archive />
-        </section>
-
-        <section id="about">
-          <About />
-        </section>
+        <SongRequest />
+        <Collaborate/>
+        <About />
       </main>
 
       <Footer />

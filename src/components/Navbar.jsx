@@ -1,25 +1,120 @@
-const NAV_LINKS = ['Shows', 'Mixes', 'Schedule', 'Archive', 'About']
-
 export default function Navbar() {
-    const links = ['Shows', 'Mixes', 'Schedule', 'Archive', 'About']
+    const mono = {
+      fontFamily: 'DM Mono, monospace',
+    }
+  
     return (
-      <nav style={{ display:'flex', alignItems:'center', justifyContent:'space-between', padding:'20px 24px', borderBottom:'1px solid #1a1a1a', background:'#0c0c0c', position:'sticky', top:0, zIndex:100 }}>
-        <div style={{ fontFamily:'DM Mono,monospace', fontSize:15, fontWeight:500, letterSpacing:1, color:'#e8e8e8' }}>
-          SURATMI<span style={{ color:'#FF5A00' }}>FM</span>
+      <header
+        style={{
+          background: '#FF4D00',
+          height: 88,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          padding: '0 32px',
+          position: 'sticky',
+          top: 0,
+          zIndex: 999,
+        }}
+      >
+        {/* Left */}
+  
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 14,
+          }}
+        >
+          <button
+            style={{
+              width: 44,
+              height: 44,
+              border: 'none',
+              background: 'transparent',
+              cursor: 'pointer',
+              color: '#fff',
+            }}
+          >
+            ▶
+          </button>
+  
+          <div
+            style={{
+              border: '2px solid rgba(255,255,255,.8)',
+              borderRadius: 12,
+              padding: '10px 16px',
+              minWidth: 320,
+              color: '#fff',
+              fontSize: 18,
+            }}
+          >
+            Live Now — Malam Minggu w/ DJ Lastri
+          </div>
         </div>
-        <div style={{ display:'flex', gap:20 }}>
-          {links.map(l => (
-            <a key={l} href={`#${l.toLowerCase()}`} style={{ fontFamily:'DM Mono,monospace', fontSize:9, color:'#444', textDecoration:'none', letterSpacing:2, textTransform:'uppercase', transition:'color .15s' }}
-              onMouseEnter={e => e.target.style.color='#e8e8e8'}
-              onMouseLeave={e => e.target.style.color='#444'}
-            >{l}</a>
-          ))}
+  
+        {/* Center */}
+  
+        <div
+          style={{
+            position: 'absolute',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            textAlign: 'center',
+          }}
+        >
+          <div
+            style={{
+              fontFamily: 'Instrument Serif, serif',
+              fontSize: 42,
+              lineHeight: 1,
+              color: '#fff',
+            }}
+          >
+            suratmiFM
+          </div>
         </div>
-        <div style={{ display:'flex', alignItems:'center', gap:6, fontFamily:'DM Mono,monospace', fontSize:9, color:'#FF5A00', letterSpacing:2 }}>
-          <span style={{ width:4, height:4, background:'#FF5A00', borderRadius:'50%', display:'inline-block', animation:'pulse 1.5s infinite' }} />
-          ON AIR
-          <style>{`@keyframes pulse{0%,100%{opacity:1}50%{opacity:.1}}`}</style>
-        </div>
-      </nav>
+  
+        {/* Right */}
+  
+        <button
+          style={{
+            border: 'none',
+            background: 'transparent',
+            color: '#fff',
+            cursor: 'pointer',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 5,
+          }}
+        >
+          <span
+            style={{
+              width: 28,
+              height: 2,
+              background: '#fff',
+              display: 'block',
+            }}
+          />
+  
+          <span
+            style={{
+              width: 28,
+              height: 2,
+              background: '#fff',
+              display: 'block',
+            }}
+          />
+  
+          <span
+            style={{
+              width: 28,
+              height: 2,
+              background: '#fff',
+              display: 'block',
+            }}
+          />
+        </button>
+      </header>
     )
   }

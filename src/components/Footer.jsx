@@ -1,134 +1,170 @@
-export default function Footer() {
-    const mono = {
-      fontFamily: 'DM Mono, monospace',
-    }
+import {
+    FaInstagram,
+    FaYoutube,
+  } from 'react-icons/fa'
   
-    const links = [
-      'Instagram',
-      'Schedule',
-      'Submission',
-      'Contact',
-    ]
+  import { SiMixcloud } from 'react-icons/si'
   
+  export default function Footer() {
     return (
       <footer
         style={{
-          borderTop: '1px solid #1a1a1a',
-          padding: '100px 24px 32px',
+          background: '#FF5A00',
+          color: '#fff',
+          marginTop: 120,
         }}
       >
-        {/* Big Logo */}
         <div
           style={{
-            marginBottom: 80,
+            maxWidth: 1600,
+            margin: '0 auto',
+            padding: '100px 32px 50px',
           }}
         >
-          <h2
-            style={{
-              fontSize: 'clamp(64px,12vw,180px)',
-              lineHeight: '.85',
-              fontWeight: 300,
-              letterSpacing: '-0.06em',
-              color: '#e8e8e8',
-              margin: 0,
-            }}
-          >
-            SURATMI
-            <span style={{ color: '#FF5A00' }}>FM</span>
-          </h2>
-  
-          <p
-            style={{
-              marginTop: 16,
-              color: '#555',
-              fontSize: 14,
-              maxWidth: 320,
-              lineHeight: 1.7,
-            }}
-          >
-            Independent radio platform,
-            broadcasting music, culture,
-            and conversations beyond
-            the algorithm.
-          </p>
-        </div>
-  
-        {/* Footer Bottom */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr auto',
-            gap: 40,
-            alignItems: 'end',
-          }}
-        >
-          <div>
-            <div
-              style={{
-                ...mono,
-                fontSize: 8,
-                color: '#444',
-                letterSpacing: 2,
-                marginBottom: 12,
-              }}
-            >
-              NAVIGATION
-            </div>
-  
-            <div
-              style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                gap: 24,
-              }}
-            >
-              {links.map((link) => (
-                <a
-                  key={link}
-                  href="#"
-                  style={{
-                    ...mono,
-                    fontSize: 10,
-                    color: '#777',
-                    textDecoration: 'none',
-                    letterSpacing: 1.5,
-                    textTransform: 'uppercase',
-                    transition: '.2s',
-                  }}
-                >
-                  {link}
-                </a>
-              ))}
-            </div>
-          </div>
+          {/* Logo */}
   
           <div
             style={{
-              textAlign: 'right',
+              marginBottom: 50,
             }}
           >
-            <div
+            <h2
               style={{
-                ...mono,
-                fontSize: 8,
-                color: '#444',
-                letterSpacing: 2,
-                marginBottom: 8,
+                fontSize: 'clamp(72px,10vw,140px)',
+                lineHeight: '.85',
+                margin: 0,
+                fontWeight: 700,
+                letterSpacing: -4,
+                textTransform: 'uppercase',
               }}
             >
-              BASED IN INDONESIA
-            </div>
+              SURATMI
+              <br />
+              FM
+            </h2>
   
-            <div
+            <p
               style={{
-                ...mono,
-                fontSize: 9,
-                color: '#666',
-                letterSpacing: 1,
+                marginTop: 24,
+                fontSize: 20,
+                maxWidth: 380,
+                lineHeight: 1.7,
+                opacity: .9,
               }}
             >
+              Independent internet radio
+              broadcasting music, culture
+              and creative communities.
+            </p>
+          </div>
+  
+          {/* Social */}
+  
+          <div
+            style={{
+              display: 'flex',
+              gap: 18,
+              marginBottom: 60,
+            }}
+          >
+            {[
+              {
+                icon: <FaInstagram />,
+                href: '#',
+              },
+              {
+                icon: <SiMixcloud />,
+                href: '#',
+              },
+              {
+                icon: <FaYoutube />,
+                href: '#',
+              },
+            ].map((item, index) => (
+              <a
+                key={index}
+                href={item.href}
+                style={{
+                  width: 56,
+                  height: 56,
+                  borderRadius: '50%',
+                  border: '1px solid rgba(255,255,255,.3)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: '#fff',
+                  fontSize: 22,
+                  textDecoration: 'none',
+                  transition: '.3s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = '#fff'
+                  e.currentTarget.style.color = '#FF5A00'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'transparent'
+                  e.currentTarget.style.color = '#fff'
+                }}
+              >
+                {item.icon}
+              </a>
+            ))}
+          </div>
+  
+          {/* Navigation */}
+  
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: 28,
+              paddingTop: 40,
+              borderTop: '1px solid rgba(255,255,255,.2)',
+            }}
+          >
+            {[
+              'About',
+              'Submit Music',
+              'Collaborate',
+              'Archive',
+              'Contact',
+            ].map((item) => (
+              <a
+                key={item}
+                href="#"
+                style={{
+                  color: '#fff',
+                  textDecoration: 'none',
+                  fontSize: 15,
+                  letterSpacing: 1,
+                  textTransform: 'uppercase',
+                }}
+              >
+                {item}
+              </a>
+            ))}
+          </div>
+  
+          {/* Bottom */}
+  
+          <div
+            style={{
+              marginTop: 70,
+              display: 'flex',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap',
+              gap: 20,
+              opacity: .75,
+              fontSize: 13,
+            }}
+          >
+            <span>
               © 2026 SURATMIFM
-            </div>
+            </span>
+  
+            <span>
+              Jakarta — Indonesia
+            </span>
           </div>
         </div>
       </footer>
