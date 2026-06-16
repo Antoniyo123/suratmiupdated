@@ -1,6 +1,6 @@
 import '../styles/About.css'
 
-const links = ['Instagram', 'Submission', 'Support Us']
+const links = ['Instagram', 'Register', 'Partnership']
 
 export default function About() {
   return (
@@ -10,19 +10,28 @@ export default function About() {
       <div className="about__grid">
         <div className="about__text">
           <h2 className="about__heading">
-            Independent radio<br />
-            for people who<br />
-            actually listen.
+            More than<br />
+            just karaoke.<br />
+            It's a show.
           </h2>
+
           <p className="about__body">
-            suratmiFM adalah stasiun radio independen yang mengudara 24 jam
-            sehari. Sebuah ruang untuk musik, percakapan, eksperimen, dan
-            komunitas yang tumbuh di luar algoritma.
+            SuratmiFM adalah event karaoke interaktif yang menghadirkan
+            pengalaman bernyanyi yang berbeda. Dipenuhi berbagai gimmick,
+            tantangan seru, kuis berhadiah, dan lagu-lagu yang membuat semua
+            orang ikut bernyanyi bersama.
           </p>
+
           <p className="about__body">
-            Kami percaya bahwa suara terbaik lahir dari pinggiran. Dari
-            ruang-ruang kecil, malam-malam panjang, dan orang-orang yang
-            benar-benar peduli terhadap budaya yang mereka bangun.
+            Setiap acara dirancang untuk menciptakan momen yang tidak terduga.
+            Dari permainan spontan, hadiah menarik, hingga suasana penuh energi
+            yang membuat penonton dan peserta menjadi bagian dari pertunjukan.
+          </p>
+
+          <p className="about__body">
+            Bukan sekadar karaoke, SuratmiFM adalah tempat untuk bersenang-senang,
+            bertemu orang baru, dan menciptakan kenangan yang akan terus
+            dibicarakan setelah musik berhenti.
           </p>
         </div>
 
