@@ -2,75 +2,85 @@ import '../styles/Collaborate.css'
 
 export default function Collaborate() {
   const portraits = [
-    'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200',
-    'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200',
-    'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1200',
-    'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1200',
-    'https://images.unsplash.com/photo-1504593811423-6dd665756598?q=80&w=1200',
+    {
+      image: '/profile/alex.png',
+      instagram: 'https://instagram.com/alexjorr1',
+    },
+    {
+      image: '/profile/alfin.png',
+      instagram: 'https://instagram.com/alfinpanduu',
+    },
+    {
+      image: '/profile/adit.png',
+      instagram: 'https://instagram.com/adityasryksm',
+    },
+    {
+      image: '/profile/chito.png',
+      instagram: 'https://instagram.com/mashito92',
+    },
+    {
+      image: '/profile/fili.png',
+      instagram: 'https://instagram.com/fllbert',
+    },
   ]
 
   return (
     <section
-      id="collaborate"
-      className="collaborate"
-    >
-      {/* Portrait Background */}
+  id="collaborate"
+  className="collaborate"
+>
 
-      <div className="collaborate-grid">
-        {portraits.map((img, index) => (
-          <div
-            key={index}
-            className="collaborate-portrait"
-          >
-            <img
-              src={img}
-              alt=""
-              className={`collaborate-image ${
-                index % 2 === 0
-                  ? 'portrait-up'
-                  : 'portrait-down'
-              }`}
-            />
-          </div>
-        ))}
-      </div>
+  {/* Section Header */}
 
-      {/* Overlay */}
+  <div className="collaborate-header">
+    {/* <span className="collaborate-label">
+      
+    </span> */}
 
-      <div className="collaborate-overlay" />
+    <h2 className="collaborate-heading">
+      The People Behind
+      <br />
+      SuratmiFM
+    </h2>
 
-      {/* Content */}
+    {/* <p className="collaborate-intro">
+      SuratmiFM is powered by a small collective of
+      selectors, DJs, creatives, and music lovers.
+      Meet the people who keep the station running,
+      curate the music, and shape the community.
+      Click a profile to connect directly through
+      Instagram.
+    </p> */}
+  </div>
 
-      <div className="collaborate-content">
-        <div className="collaborate-label">
-          Open For Collaboration
+  {/* Portrait Grid */}
+
+  <div className="collaborate-grid">
+    {portraits.map((profile, index) => (
+      <a
+        key={index}
+        href={profile.instagram}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="collaborate-portrait"
+      >
+        <img
+          src={profile.image}
+          alt=""
+          className={`collaborate-image ${
+            index % 2 === 0
+              ? 'portrait-up'
+              : 'portrait-down'
+          }`}
+        />
+
+        <div className="profile-overlay">
+          Instagram ↗
         </div>
+      </a>
+    ))}
+  </div>
 
-        <h2 className="collaborate-title">
-          LET'S
-          <br />
-          COLLABORATE
-        </h2>
-
-        <p className="collaborate-description">
-          SuratmiFM works with artists,
-          labels, collectives, venues,
-          communities and cultural projects.
-          If you have an idea worth sharing,
-          let's build something meaningful
-          together.
-        </p>
-
-        <div className="collaborate-actions">
-          <button className="collaborate-primary-btn">
-          Connect With Us
-          </button>
-
-          <button className="collaborate-secondary-btn">
-            Submit Music
-          </button>
-        </div>
-      </div>
-    </section>
+</section>
   )
 }

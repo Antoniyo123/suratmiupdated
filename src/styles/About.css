@@ -1,104 +1,240 @@
+/* ========================= */
+/* ABOUT SECTION */
+/* ========================= */
+
 .about {
+    padding: 120px 40px 60px;
     border-top: 1px solid #1a1a1a;
-    padding: 56px 24px;
   }
   
   .about__label {
-    display: block;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #FF5A00;
-    margin-bottom: 36px;
-  }
-  
-  .about__label::before {
-    content: '';
+    font-family: 'Instrument Serif', Georgia, serif;
     display: inline-block;
-    width: 16px;
-    height: 2px;
-    background: #FF5A00;
-    margin-right: 8px;
-    vertical-align: middle;
+  
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  
+    color: #ff5a00;
+  
+    margin-bottom: 32px;
   }
   
   .about__grid {
     display: grid;
-    grid-template-columns: 1fr 220px;
-    gap: 48px;
-    align-items: start;
+    grid-template-columns: minmax(0, 1.4fr) minmax(320px, .8fr);
+    gap: 120px;
+  }
+  
+  /* ========================= */
+  /* LEFT COLUMN */
+  /* ========================= */
+  
+  .about__text {
+    max-width: 760px;
   }
   
   .about__heading {
-    font-family: 'Instrument Serif', Georgia, serif;
-    font-size: clamp(28px, 4vw, 52px);
-    font-weight: 300;
-    line-height: 1.0;
-    letter-spacing: -0.03em;
-    color: #e8e8e8;
-    margin: 0 0 24px 0;
+    margin: 0;
+    font-family: 'JetBrains Mono', monospace;
+  
+    font-size: clamp(52px, 7vw, 110px);
+    line-height: .9;
+    font-weight: 700;
+  
+    letter-spacing: -0.05em;
+  
+    color: #fff;
   }
   
   .about__body {
+    font-family: 'Instrument Serif', Georgia, serif;
+
+    max-width: 720px;
+  
+    margin-top: 28px;
+  
+    color: #8a8a8a;
+  
+    font-size: 17px;
+    line-height: 1.9;
+  
+    font-weight: 400;
+  }
+  
+  .about__body:first-of-type {
+    margin-top: 48px;
+  }
+  
+  /* ========================= */
+  /* RIGHT COLUMN */
+  /* ========================= */
+  
+  .about__contact {
+    border-left: 1px solid #1a1a1a;
+    padding-left: 48px;
+  }
+  
+  .about__contact-title {
+    margin: 0;
+    font-family: 'Instrument Serif', Georgia, serif;
+  
+    font-size: 32px;
+    font-weight: 600;
+  
+    color: #fff;
+  }
+  
+  .about__contact-text {
+    margin-top: 16px;
+    font-family: 'Instrument Serif', Georgia, serif;
+  
+    color: #888;
+  
+    line-height: 1.8;
     font-size: 15px;
-    line-height: 1.75;
-    color: #666;
-    margin: 0 0 16px 0;
-    max-width: 560px;
   }
   
-  .about__body:last-child {
-    margin-bottom: 0;
-  }
+  /* ========================= */
+  /* SOCIALS */
+  /* ========================= */
   
-  /* ── Links column ─────────────────────────── */
+  .about__socials {
+    margin-top: 40px;
   
-  .about__links {
     display: flex;
     flex-direction: column;
-    border-top: 1px solid #1a1a1a;
   }
   
-  .about__link {
+  .about__social {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    text-decoration: none;
-    color: #555;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 14px 0;
+    gap: 14px;
+  
+    padding: 18px 0;
+  
     border-bottom: 1px solid #1a1a1a;
-    transition: color 0.2s ease, padding-left 0.2s ease;
+  
+    text-decoration: none;
+    color: #e8e8e8;
+  
+    transition: .3s;
   }
   
-  .about__link:hover {
-    color: #fff;
-    padding-left: 8px;
+  .about__social:hover {
+    color: #ff5a00;
   }
   
-  .about__link-arrow {
+  .about__social-icon {
+    font-size: 18px;
+  }
+  
+  .about__social-arrow {
+    margin-left: auto;
+  }
+  
+  .about__info {
+    margin-top: 32px;
+  
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  
+    color: #666;
+    font-size: 13px;
+  }
+  
+  /* ========================= */
+  /* COPYRIGHT */
+  /* ========================= */
+  
+  .about__bottom {
+    margin-top: 80px;
+    padding-top: 24px;
+  
+    border-top: 1px solid #1a1a1a;
+  
+    color: #666;
     font-size: 12px;
   }
   
-  /* ── Responsive ───────────────────────────── */
+  /* ========================= */
+  /* TABLET */
+  /* ========================= */
+  
+  @media (max-width: 1024px) {
+  
+    .about {
+      padding: 100px 24px 50px;
+    }
+  
+    .about__grid {
+      gap: 80px;
+    }
+  
+    .about__heading {
+      font-size: clamp(48px, 8vw, 80px);
+    }
+  
+    .about__body {
+      font-size: 16px;
+    }
+  }
+  
+  /* ========================= */
+  /* MOBILE */
+  /* ========================= */
   
   @media (max-width: 768px) {
+  
     .about {
-      padding: 48px 20px;
+      padding: 80px 16px 40px;
     }
   
     .about__grid {
       grid-template-columns: 1fr;
-      gap: 32px;
+      gap: 60px;
+    }
+  
+    .about__contact {
+      border-left: none;
+      border-top: 1px solid #1a1a1a;
+  
+      padding-left: 0;
+      padding-top: 40px;
+    }
+  
+    .about__heading {
+      font-size: 48px;
+    }
+  
+    .about__body {
+      margin-top: 20px;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+  
+    .about__body:first-of-type {
+      margin-top: 32px;
+    }
+  
+    .about__bottom {
+      margin-top: 50px;
     }
   }
   
+  /* ========================= */
+  /* SMALL MOBILE */
+  /* ========================= */
+  
   @media (max-width: 480px) {
-    .about {
-      padding: 40px 16px;
+  
+    .about__heading {
+      font-size: 40px;
+    }
+  
+    .about__body {
+      font-size: 14px;
     }
   }

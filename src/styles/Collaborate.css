@@ -9,12 +9,47 @@
   /* BACKGROUND GRID */
   /* ========================= */
   
+/* ========================= */
+/* SECTION HEADER */
+/* ========================= */
+
+.collaborate-header {
+    max-width: 1400px;
+    margin: 0 auto;
+  
+    padding: 100px 40px 60px;
+  }
+  
+  .collaborate-heading {
+    margin: 0;
+    font-family: 'JetBrains Mono', monospace;
+  
+    font-size: clamp(48px, 8vw, 120px);
+    line-height: .9;
+    font-weight: 700;
+  
+    color: #fff;
+    letter-spacing: -0.04em;
+  }
+  
+  .collaborate-intro {
+    max-width: 700px;
+  
+    margin-top: 24px;
+  
+    font-size: 18px;
+    line-height: 1.9;
+  
+    color: rgba(255,255,255,.75);
+  }
+  
   .collaborate-grid {
-    position: absolute;
-    inset: 0;
+    position: relative;
   
     display: grid;
     grid-template-columns: repeat(5, 1fr);
+  
+    min-height: 70vh;
   }
   
   .collaborate-portrait {
@@ -24,8 +59,10 @@
   
   .collaborate-image {
     width: 100%;
-    height: 110%;
+    height: 100%;
+  
     object-fit: cover;
+    object-position: center top;
   
     filter: grayscale(100%) contrast(120%);
   }
@@ -42,17 +79,44 @@
   /* OVERLAY */
   /* ========================= */
   
-  .collaborate-overlay {
+  .collaborate-portrait {
+    position: relative;
+    overflow: hidden;
+    display: block;
+  }
+  
+  .profile-overlay {
     position: absolute;
     inset: 0;
   
-    background:
-      linear-gradient(
-        to top,
-        rgba(0, 0, 0, .96),
-        rgba(0, 0, 0, .45)
-      ),
-      rgba(255, 90, 0, .35);
+    background: rgba(255, 90, 0, .75);
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    color: white;
+  
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  
+    opacity: 0;
+  
+    transition: .3s;
+  }
+  
+  .collaborate-portrait:hover .profile-overlay {
+    opacity: 1;
+  }
+  
+  .collaborate-portrait:hover .collaborate-image {
+    transform: scale(1.05);
+  }
+  
+  .collaborate-image {
+    transition: .4s;
   }
   
   /* ========================= */

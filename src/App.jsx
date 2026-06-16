@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
-import Footer from './components/Footer'
 import SongRequest from './components/SongRequest'
 import Collaborate from './components/Collaborate'
 import Preloader from './components/Preloader'
@@ -43,7 +42,7 @@ export default function App() {
           <About />
         </main>
 
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </>
   )
