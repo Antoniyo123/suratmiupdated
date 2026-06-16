@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap');
+
+/* ── Wrapper card ── */
+.srf-wrap {
+  font-family: 'DM Mono', monospace;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  background: var(--color-background-primary, #fff);
+  border: 0.5px solid var(--color-border-tertiary, #e5e5e5);
+  border-radius: 12px;
+}
+
+/* ── Header ── */
+.srf-header {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--color-border-tertiary, #e5e5e5);
+  padding-bottom: 1.5rem;
+}
+
+.srf-header-label {
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #ff5a00;
+  margin: 0 0 6px;
+}
+
+.srf-header-title {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--color-text-primary, #111);
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+/* ── Blok per seksi ── */
+.srf-block {
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--color-border-secondary, #ddd);
+}
+
+.srf-block:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.srf-block-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1.25rem;
+}
+
+.srf-block-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #ff5a00;
+}
+
+.srf-block-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-text-secondary, #555);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.srf-optional {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary, #888);
+  border: 0.5px solid var(--color-border-tertiary, #ddd);
+  padding: 2px 7px;
+  border-radius: 2px;
+}
+
+/* ── Fields ── */
+.srf-block-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.srf-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.srf-field:last-child {
+  margin-bottom: 0;
+}
+
+.srf-field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* ── Label ── */
+.srf-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-text-secondary, #f3eeee);
+  margin-bottom: 7px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.srf-req {
+  color: #ff5a00;
+  font-size: 11px;
+}
+
+/* ── Input / Textarea ── */
+.srf input,
+.srf textarea {
+  width: 100%;
+  background: var(--color-background-secondary, #f5f5f5);
+  border: 0.5px solid var(--color-border-secondary, #d0d0d0);
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: var(--color-text-primary, #111);
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+
+.srf input:focus,
+.srf textarea:focus {
+  border-color: #ff5a00;
+  background: var(--color-background-primary, #fff);
+  box-shadow: 0 0 0 3px rgba(255, 90, 0, 0.12);
+}
+
+.srf input::placeholder,
+.srf textarea::placeholder {
+  color: var(--color-text-tertiary, #aaa);
+}
+
+.srf textarea {
+  resize: none;
+  line-height: 1.6;
+}
+
+/* ── Feedback ── */
+.srf-feedback {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin: 0 0 16px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.srf-feedback--error {
+  color: #cc3300;
+  border-left: 2px solid #cc3300;
+  background: rgba(204, 51, 0, 0.08);
+}
+
+.srf-feedback--success {
+  color: #ff5a00;
+  border-left: 2px solid #ff5a00;
+  background: rgba(255, 90, 0, 0.08);
+}
+
+/* ── Footer & Submit ── */
+.srf-footer {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border-secondary, #ddd);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.srf-required-note {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: var(--color-text-tertiary, #aaa);
+}
+
+.srf-submit {
+  background: transparent;
+  border: 1px solid #ff5a00;
+  color: #ff5a00;
+  padding: 12px 24px;
+  cursor: pointer;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: background 0.2s, color 0.2s;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+.srf-submit:hover:not(:disabled) {
+  background: #ff5a00;
+  color: #fff;
+}
+
+.srf-submit--loading,
+.srf-submit:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .srf input,
+  .srf textarea {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .srf-field-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .srf input,
+  .srf textarea {
+    font-size: 13px;
+  }
+
+  .srf-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .srf-submit {
+    width: 100%;
+    text-align: center;
+  }
+}

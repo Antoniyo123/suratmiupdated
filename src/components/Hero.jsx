@@ -1,189 +1,220 @@
-export default function Hero() {
-    const mono = {
-      fontFamily: 'DM Mono, monospace',
-    }
+import { useState } from 'react'
+import '../styles/Hero.css'
+import HeroDetailModal from './HeroDetailModal'
+
+
+
+const CARD_DATA = [
+    {
+      id: 'live',
+      images: [
+        '/img/pic.jpg',
+        '/img/pic1.jpg',
+        '/img/pic2.jpg',
+      ],
+      eyebrow: 'Suratmi FM Lucy Beer Mart Blok M',
+      title: 'Suratmi FM X The Perompaks\nw/ Suratmi FM',
+      meta: 'Every Saturday · 21:00 WIB',
+  
+      description:
+        'Program musik elektronik mingguan yang menghadirkan pilihan house, disco, balearic, dan leftfield dance music untuk menemani malam minggu.',
+  
+      cta: 'Listen Live',
+      ctaIcon: '▶',
+      accent: '#FF5A00',
+    },
+  
+    {
+      id: 'mix',
+      images: [
+        '/img/pic3.jpg',
+        '/img/pic4.jpg',
+        '/img/pic5.jpg',
+      ],
+      eyebrow: 'Latest Mix',
+      title: 'SURATMI MIX 003:\nGingerale',
+      meta: 'Available on Mixcloud',
+  
+      description:
+        'A one-hour mix exploring ambient textures, downtempo rhythms, and late-night listening sessions.',
+  
+      cta: 'Play Mix',
+      ctaIcon: '▶',
+      accent: '#E8E8E8',
+    },
+  ]
+
+  export default function Hero() {
+    const [selectedCard, setSelectedCard] =
+      useState(null)
   
     return (
-      <section
-        style={{
-          padding: '32px 24px 80px',
-        }}
-      >
-        {/* Header */}
+      <section className="hero">
   
-        <div
-          style={{
-            marginBottom: 32,
-          }}
-        >
-          <div
-            style={{
-              ...mono,
-              fontSize: 10,
-              letterSpacing: 3,
-              color: '#FF5A00',
-              marginBottom: 12,
-              textTransform: 'uppercase',
-            }}
-          >
-            Community Radio
+        <div className="hero-header">
+          <div className="hero-header-content">
+  
+            <h1 className="hero-title">
+              SuratmiFM
+            </h1>
+  
+            <p className="hero-subtitle">
+              Request a track, send a shoutout,
+              or dedicate a song live on air.
+            </p>
+  
+            <a
+              href="#song-request"
+              className="hero-request-cta"
+            >
+              REQUEST A SONG →
+            </a>
+  
           </div>
-  
-          <h1
-            style={{
-              fontFamily: 'Instrument Serif, serif',
-              fontSize: 'clamp(52px,8vw,110px)',
-              fontWeight: 400,
-              lineHeight: '.9',
-              color: '#E8E8E8',
-              margin: 0,
-            }}
-          >
-            SURATMIFM
-          </h1>
         </div>
   
-        {/* Cards */}
-  
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: 16,
-          }}
-        >
-          <HeroCard
-            image="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1800"
-            title="Malam Minggu w/ DJ Lastri"
-            subtitle="Every Saturday · 21:00 WIB"
-            button="Listen Live"
-          />
-  
-          <HeroCard
-            image="https://images.unsplash.com/photo-1571266028243-d220c9c3b7b1?q=80&w=1800"
-            title="SURATMI MIX 003: Gingerale"
-            subtitle="Available on Mixcloud"
-            button="Play Mix"
-          />
+        <div className="hero-grid">
+          {CARD_DATA.map((card) => (
+            <HeroCard
+              key={card.id}
+              card={card}
+              onOpen={() =>
+                setSelectedCard(card)
+              }
+            />
+          ))}
         </div>
+  
+        {selectedCard && (
+          <HeroDetailModal
+            card={selectedCard}
+            onClose={() =>
+              setSelectedCard(null)
+            }
+          />
+        )}
+  
       </section>
     )
   }
+
+function HeroCard({ card, onOpen }) {
+    const [index, setIndex] = useState(0)
+    const total = card.images.length
   
-  function HeroCard({
-    image,
-    title,
-    subtitle,
-    button,
-  }) {
+    const prev = (e) => {
+      e.stopPropagation()
+      setIndex((i) => (i - 1 + total) % total)
+    }
+  
+    const next = (e) => {
+      e.stopPropagation()
+      setIndex((i) => (i + 1) % total)
+    }
+  
+    const titleLines = card.title.split('\n')
+  
     return (
       <div
-        style={{
-          position: 'relative',
-          aspectRatio: '1 / 1.05',
-          overflow: 'hidden',
-          border: '1px solid #FF5A00',
-          borderRadius: 24,
-          cursor: 'pointer',
-        }}
+        className="hero-card"
+        onClick={onOpen}
       >
-        {/* Background Image */}
   
-        <img
-          src={image}
-          alt={title}
-          style={{
-            position: 'absolute',
-            inset: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            filter: 'grayscale(25%)',
-          }}
-        />
+        {/* Images */}
+        <div className="hero-card-images">
+          {card.images.map((src, i) => (
+            <img
+              key={i}
+              src={src}
+              alt={card.title}
+              className={`hero-card-image ${
+                i === index ? 'is-active' : ''
+              }`}
+            />
+          ))}
+        </div>
   
         {/* Overlay */}
+        <div className="hero-card-overlay" />
   
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background:
-              'linear-gradient(to top, rgba(0,0,0,.92), rgba(0,0,0,.25))',
-          }}
-        />
+        {/* Previous */}
+        <button
+          className="hero-arrow hero-arrow--prev"
+          onClick={prev}
+          aria-label="Previous image"
+        >
+          ←
+        </button>
+  
+        {/* Next */}
+        <button
+          className="hero-arrow hero-arrow--next"
+          onClick={next}
+          aria-label="Next image"
+        >
+          →
+        </button>
+  
+        {/* Dots */}
+        <div className="hero-dots">
+          {card.images.map((_, i) => (
+            <button
+              key={i}
+              className={`hero-dot ${
+                i === index ? 'is-active' : ''
+              }`}
+              onClick={(e) => {
+                e.stopPropagation()
+                setIndex(i)
+              }}
+              aria-label={`Image ${i + 1}`}
+            />
+          ))}
+        </div>
   
         {/* Content */}
+        <div className="hero-card-content">
   
-        <div
-          style={{
-            position: 'absolute',
-            left: 24,
-            right: 24,
-            bottom: 24,
-            zIndex: 2,
-          }}
-        >
-          {/* Title Box */}
+          <span className="hero-card-eyebrow">
+            {card.eyebrow}
+          </span>
   
-          <div
-            style={{
-              background: '#0A0A0A',
-              border: '1px solid #FF5A00',
-              borderRadius: 16,
-              padding: '18px 20px',
-              marginBottom: 14,
-            }}
-          >
-            <h2
+          <h2 className="hero-card-title">
+            {titleLines.map((line, i) => (
+              <span key={i}>
+                {line}
+                <br />
+              </span>
+            ))}
+          </h2>
+  
+          <div className="hero-card-footer">
+  
+            <span className="hero-card-meta">
+              {card.meta}
+            </span>
+  
+            <button
+              className="hero-card-cta"
               style={{
-                color: '#fff',
-                fontSize: 28,
-                fontWeight: 600,
-                lineHeight: 1.1,
-                margin: 0,
+                '--accent': card.accent,
+              }}
+              onClick={(e) => {
+                e.stopPropagation()
+                onOpen()
               }}
             >
-              {title}
-            </h2>
+              <span className="hero-cta-icon">
+                {card.ctaIcon}
+              </span>
+  
+              {card.cta}
+            </button>
+  
           </div>
   
-          {/* Bottom Pills */}
-  
-          <div
-            style={{
-              display: 'flex',
-              gap: 10,
-              flexWrap: 'wrap',
-            }}
-          >
-            <div
-              style={{
-                background: '#0A0A0A',
-                border: '1px solid #FF5A00',
-                borderRadius: 999,
-                padding: '10px 16px',
-                color: '#fff',
-                fontSize: 12,
-              }}
-            >
-              {subtitle}
-            </div>
-  
-            <div
-              style={{
-                background: '#0A0A0A',
-                border: '1px solid #FF5A00',
-                borderRadius: 999,
-                padding: '10px 16px',
-                color: '#fff',
-                fontSize: 12,
-              }}
-            >
-              {button}
-            </div>
-          </div>
         </div>
+  
       </div>
     )
   }

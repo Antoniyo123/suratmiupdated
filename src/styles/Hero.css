@@ -1,0 +1,411 @@
+/* =============================================
+   Hero.css — suratmiFM
+   Visual redesign: editorial, high-contrast,
+   berbeda dari RRO (tidak vintage/image-grid saja).
+   ============================================= */
+
+
+/* ── Section ─────────────────────────────────── */
+
+.hero {
+    padding-inline: 64px;
+    padding-block: 64px 0;
+    background: #0A0A0A;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  
+  /* ── Header ──────────────────────────────────── */
+  
+  .hero-header-content {
+    max-width: 640px;
+  }
+  
+  .hero-subtitle {
+    margin-top: 16px;
+  
+    color: rgba(232,232,232,.65);
+  
+    font-size: 15px;
+    line-height: 1.8;
+  
+    max-width: 460px;
+  }
+  
+  .hero-request-cta {
+    margin-top: 24px;
+  
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  
+    padding: 14px 22px;
+  
+    background: #FF5A00;
+    color: #0A0A0A;
+  
+    text-decoration: none;
+  
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .12em;
+  
+    text-transform: uppercase;
+  
+    transition: .25s;
+  }
+  
+  .hero-request-cta:hover {
+    transform: translateY(-2px);
+    background: #ff6a1a;
+  }
+  
+  .hero-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #FF5A00;
+    flex-shrink: 0;
+  }
+  
+  .hero-title {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-size: clamp(48px, 8vw, 120px);
+    font-weight: 300;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    color: #E8E8E8;
+    margin: 0;
+    text-align: right;
+  }
+  
+  
+  /* ── Grid — dua card berdampingan ────────────── */
+  
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    /* Card memanjang sampai batas section */
+    margin-inline: -64px;
+    padding-inline: 64px;
+    padding-bottom: 0;
+  }
+  
+  
+  /* ── Card ────────────────────────────────────── */
+  
+  .hero-card {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 3 / 4;
+    background: #111;
+    cursor: pointer;
+  }
+  
+  /* Sedikit corner radius — beda dari RRO yang flat */
+  .hero-card:first-child { border-radius: 4px 0 0 0; }
+  .hero-card:last-child  { border-radius: 0 4px 0 0; }
+  
+  
+  /* ── Images — stack, satu aktif ──────────────── */
+  
+  .hero-card-images {
+    position: absolute;
+    inset: 0;
+  }
+  
+  .hero-card-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.6s ease, transform 0.8s ease;
+    transform: scale(1.04);
+  }
+  
+  .hero-card-image.is-active {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  
+  /* ── Overlay gradient ────────────────────────── */
+  
+  .hero-card-overlay {
+    position: absolute;
+    inset: 0;
+    /* Lebih agresif di bawah untuk teks */
+    background: linear-gradient(
+      to top,
+      rgba(5, 5, 5, 0.96) 0%,
+      rgba(5, 5, 5, 0.5)  40%,
+      rgba(5, 5, 5, 0.1)  70%,
+      transparent         100%
+    );
+    z-index: 1;
+  }
+  
+  
+  /* ── Arrow buttons ───────────────────────────── */
+  
+  .hero-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    background: rgba(10, 10, 10, 0.55);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(232, 232, 232, 0.15);
+    color: #E8E8E8;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  }
+  
+  .hero-card:hover .hero-arrow {
+    opacity: 1;
+  }
+  
+  .hero-arrow:hover {
+    background: rgba(255, 90, 0, 0.9);
+    border-color: #FF5A00;
+  }
+  
+  .hero-arrow--prev { left: 16px; }
+  .hero-arrow--next { right: 16px; }
+  
+  
+  /* ── Dot indicators ──────────────────────────── */
+  
+  .hero-dots {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 3;
+    display: flex;
+    gap: 6px;
+  }
+  
+  .hero-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(232, 232, 232, 0.3);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  
+  .hero-dot.is-active {
+    background: #FF5A00;
+    transform: scale(1.3);
+  }
+  
+  
+  /* ── Content area ────────────────────────────── */
+  
+  .hero-card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    padding: 32px 28px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .hero-card-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #FF5A00;
+  }
+  
+  .hero-card-title {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-size: clamp(22px, 2.4vw, 36px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: #E8E8E8;
+    margin: 0;
+  }
+  
+  .hero-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 4px;
+  }
+  
+  .hero-card-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: rgba(232, 232, 232, 0.45);
+    text-transform: uppercase;
+  }
+  
+  .hero-card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: 1px solid var(--accent, #FF5A00);
+    color: var(--accent, #FF5A00);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background 0.2s ease, color 0.2s ease;
+    white-space: nowrap;
+  }
+  
+  .hero-card-cta:hover {
+    background: var(--accent, #FF5A00);
+    color: #0A0A0A;
+  }
+  
+  .hero-cta-icon {
+    font-size: 8px;
+  }
+  
+  
+  /* =============================================
+     TABLET  (≤ 1024px)
+     ============================================= */
+  
+  @media (max-width: 1024px) {
+  
+    .hero {
+      padding-inline: 40px;
+      padding-block: 48px 0;
+      gap: 32px;
+    }
+  
+    .hero-grid {
+      margin-inline: -40px;
+      padding-inline: 40px;
+    }
+  
+    .hero-card {
+      aspect-ratio: 2 / 3;
+    }
+  
+    .hero-card-content {
+      padding: 24px 20px 20px;
+    }
+  }
+  
+  
+  /* =============================================
+     MOBILE  (≤ 768px)
+     ============================================= */
+  
+  @media (max-width: 768px) {
+  
+    .hero {
+      padding-inline: 24px;
+      padding-block: 40px 0;
+      gap: 24px;
+    }
+  
+    .hero-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+  
+    .hero-title {
+        padding-top: 86px;
+      text-align: left;
+      font-size: clamp(40px, 12vw, 72px);
+    }
+  
+    /* Stack cards vertikal di mobile */
+    .hero-grid {
+      grid-template-columns: 1fr;
+      margin-inline: -24px;
+      padding-inline: 24px;
+      gap: 8px;
+    }
+  
+    .hero-card {
+      aspect-ratio: 4 / 3;
+    }
+  
+    .hero-card:first-child { border-radius: 4px 4px 0 0; }
+    .hero-card:last-child  { border-radius: 0 0 0 0; }
+  
+    /* Arrow selalu tampil di touch */
+    .hero-arrow {
+      opacity: 1;
+      width: 36px;
+      height: 36px;
+      font-size: 14px;
+    }
+  
+    .hero-card-content {
+      padding: 20px 16px 16px;
+      gap: 8px;
+    }
+  
+    .hero-card-footer {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+  }
+  
+  
+  /* =============================================
+     SMALL MOBILE  (≤ 480px)
+     ============================================= */
+  
+  @media (max-width: 480px) {
+  
+    .hero {
+      padding-inline: 16px;
+      gap: 20px;
+    }
+  
+    .hero-grid {
+      margin-inline: -16px;
+      padding-inline: 16px;
+    }
+  
+    .hero-card {
+      aspect-ratio: 1 / 1;
+    }
+  
+    .hero-arrow {
+      width: 32px;
+      height: 32px;
+      font-size: 12px;
+    }
+  
+    .hero-arrow--prev { left: 10px; }
+    .hero-arrow--next { right: 10px; }
+  }

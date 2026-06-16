@@ -1,0 +1,104 @@
+.about {
+    border-top: 1px solid #1a1a1a;
+    padding: 56px 24px;
+  }
+  
+  .about__label {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #FF5A00;
+    margin-bottom: 36px;
+  }
+  
+  .about__label::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 2px;
+    background: #FF5A00;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  
+  .about__grid {
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    gap: 48px;
+    align-items: start;
+  }
+  
+  .about__heading {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-size: clamp(28px, 4vw, 52px);
+    font-weight: 300;
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    color: #e8e8e8;
+    margin: 0 0 24px 0;
+  }
+  
+  .about__body {
+    font-size: 15px;
+    line-height: 1.75;
+    color: #666;
+    margin: 0 0 16px 0;
+    max-width: 560px;
+  }
+  
+  .about__body:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* ── Links column ─────────────────────────── */
+  
+  .about__links {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid #1a1a1a;
+  }
+  
+  .about__link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    color: #555;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 14px 0;
+    border-bottom: 1px solid #1a1a1a;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+  }
+  
+  .about__link:hover {
+    color: #fff;
+    padding-left: 8px;
+  }
+  
+  .about__link-arrow {
+    font-size: 12px;
+  }
+  
+  /* ── Responsive ───────────────────────────── */
+  
+  @media (max-width: 768px) {
+    .about {
+      padding: 48px 20px;
+    }
+  
+    .about__grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .about {
+      padding: 40px 16px;
+    }
+  }

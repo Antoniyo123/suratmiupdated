@@ -1,0 +1,141 @@
+.hero-modal-backdrop {
+    position: fixed;
+    inset: 0;
+  
+    background: rgba(0,0,0,.88);
+  
+    z-index: 9999;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    padding: 24px;
+  }
+  
+  .hero-modal {
+    width: 100%;
+    max-width: 1100px;
+    max-height: 90vh;
+  
+    overflow-y: auto;
+  
+    background: #0A0A0A;
+  
+    border: 1px solid #1A1A1A;
+  }
+  
+  .hero-modal-close {
+    position: fixed;
+  
+    top: 24px;
+    right: 24px;
+  
+    width: 48px;
+    height: 48px;
+  
+    border: none;
+  
+    background: #FF5A00;
+    color: white;
+  
+    cursor: pointer;
+  
+    font-size: 18px;
+  }
+  
+  .hero-modal-cover {
+    width: 100%;
+    height: 480px;
+  
+    object-fit: cover;
+  }
+  
+  .hero-modal-content {
+    padding: 40px;
+  }
+  
+  .hero-modal-eyebrow {
+    font-family: 'DM Mono', monospace;
+  
+    color: #FF5A00;
+  
+    text-transform: uppercase;
+    letter-spacing: .15em;
+  
+    font-size: 11px;
+  }
+  
+  .hero-modal-title {
+    margin-top: 12px;
+  
+    font-family: 'Instrument Serif', serif;
+  
+    font-size: clamp(40px, 5vw, 72px);
+  
+    font-weight: 400;
+    line-height: .95;
+  }
+  
+  .hero-modal-description {
+    margin-top: 24px;
+  
+    max-width: 700px;
+  
+    color: #A8A8A8;
+  
+    line-height: 1.9;
+  }
+  
+  .hero-modal-meta {
+    margin-top: 20px;
+  
+    color: #FF5A00;
+  
+    font-family: 'DM Mono', monospace;
+  
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-size: 11px;
+  }
+  
+  .hero-modal-gallery {
+    margin-top: 40px;
+  
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 12px;
+  }
+  
+  .hero-modal-gallery img {
+    width: 100%;
+    aspect-ratio: 1;
+  
+    object-fit: cover;
+  }
+  
+  /* Mobile */
+  
+  @media (max-width:768px) {
+  
+    .hero-modal {
+      max-height: 100vh;
+    }
+  
+    .hero-modal-cover {
+      height: 260px;
+    }
+  
+    .hero-modal-content {
+      padding: 24px 16px;
+    }
+  
+    .hero-modal-gallery {
+      grid-template-columns: 1fr;
+    }
+  
+    .hero-modal-close {
+      width: 40px;
+      height: 40px;
+    }
+  }

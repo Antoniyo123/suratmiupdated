@@ -1,0 +1,240 @@
+.collaborate {
+    position: relative;
+    min-height: 90vh;
+    overflow: hidden;
+    border-top: 1px solid #1a1a1a;
+  }
+  
+  /* ========================= */
+  /* BACKGROUND GRID */
+  /* ========================= */
+  
+  .collaborate-grid {
+    position: absolute;
+    inset: 0;
+  
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+  }
+  
+  .collaborate-portrait {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .collaborate-image {
+    width: 100%;
+    height: 110%;
+    object-fit: cover;
+  
+    filter: grayscale(100%) contrast(120%);
+  }
+  
+  .portrait-up {
+    transform: translateY(-40px);
+  }
+  
+  .portrait-down {
+    transform: translateY(40px);
+  }
+  
+  /* ========================= */
+  /* OVERLAY */
+  /* ========================= */
+  
+  .collaborate-overlay {
+    position: absolute;
+    inset: 0;
+  
+    background:
+      linear-gradient(
+        to top,
+        rgba(0, 0, 0, .96),
+        rgba(0, 0, 0, .45)
+      ),
+      rgba(255, 90, 0, .35);
+  }
+  
+  /* ========================= */
+  /* CONTENT */
+  /* ========================= */
+  
+  .collaborate-content {
+    position: relative;
+    z-index: 2;
+  
+    min-height: 90vh;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  
+    padding: 80px 40px;
+  }
+  
+  .collaborate-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  
+    color: #ff5a00;
+  
+    margin-bottom: 24px;
+  }
+  
+  .collaborate-title {
+    margin: 0;
+  
+    font-size: clamp(72px, 12vw, 220px);
+    line-height: .82;
+    font-weight: 800;
+  
+    color: #fff;
+  
+    text-transform: uppercase;
+    letter-spacing: -0.04em;
+  }
+  
+  .collaborate-description {
+    margin-top: 32px;
+  
+    max-width: 560px;
+  
+    color: rgba(255,255,255,.85);
+  
+    font-size: 18px;
+    line-height: 1.9;
+  }
+  
+  .collaborate-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  
+    margin-top: 40px;
+  }
+  
+  .collaborate-primary-btn,
+  .collaborate-secondary-btn {
+    padding: 16px 32px;
+  
+    cursor: pointer;
+  
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  
+    transition: .3s;
+  }
+  
+  .collaborate-primary-btn {
+    background: #ff5a00;
+    color: white;
+    border: none;
+  }
+  
+  .collaborate-primary-btn:hover {
+    opacity: .9;
+  }
+  
+  .collaborate-secondary-btn {
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255,255,255,.25);
+  }
+  
+  .collaborate-secondary-btn:hover {
+    border-color: #ff5a00;
+    color: #ff5a00;
+  }
+  
+  /* ========================= */
+  /* TABLET */
+  /* ========================= */
+  
+  @media (max-width: 1024px) {
+    .collaborate-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  
+    .collaborate-content {
+      padding: 70px 24px;
+    }
+  
+    .collaborate-description {
+      font-size: 16px;
+    }
+  }
+  
+  /* ========================= */
+  /* MOBILE */
+  /* ========================= */
+  
+  @media (max-width: 768px) {
+    .collaborate-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .collaborate-content {
+      min-height: auto;
+      padding: 80px 16px;
+    }
+  
+    .collaborate-title {
+      font-size: 64px;
+      line-height: .9;
+    }
+  
+    .collaborate-description {
+      margin-top: 24px;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+  
+    .collaborate-actions {
+      flex-direction: column;
+      margin-top: 32px;
+    }
+  
+    .collaborate-primary-btn,
+    .collaborate-secondary-btn {
+      width: 100%;
+    }
+  }
+  
+  /* ========================= */
+  /* SMALL MOBILE */
+  /* ========================= */
+  
+  @media (max-width: 480px) {
+    .collaborate-grid > div:nth-child(5) {
+      display: none;
+    }
+  
+    .collaborate-title {
+      font-size: 48px;
+    }
+  
+    .collaborate-description {
+      font-size: 14px;
+    }
+  
+    .collaborate-label {
+      letter-spacing: 2px;
+    }
+  }
+  
+  /* ========================= */
+  /* EXTRA SMALL */
+  /* ========================= */
+  
+  @media (max-width: 360px) {
+    .collaborate-title {
+      font-size: 40px;
+    }
+  
+    .collaborate-description {
+      font-size: 13px;
+    }
+  }

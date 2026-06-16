@@ -1,120 +1,85 @@
+import { useState } from 'react'
+import '../styles/Navbar.css'
+
 export default function Navbar() {
-    const mono = {
-      fontFamily: 'DM Mono, monospace',
-    }
-  
-    return (
-      <header
-        style={{
-          background: '#FF4D00',
-          height: 88,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          padding: '0 32px',
-          position: 'sticky',
-          top: 0,
-          zIndex: 999,
-        }}
-      >
-        {/* Left */}
-  
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 14,
-          }}
-        >
-          <button
-            style={{
-              width: 44,
-              height: 44,
-              border: 'none',
-              background: 'transparent',
-              cursor: 'pointer',
-              color: '#fff',
-            }}
-          >
-            ▶
-          </button>
-  
-          <div
-            style={{
-              border: '2px solid rgba(255,255,255,.8)',
-              borderRadius: 12,
-              padding: '10px 16px',
-              minWidth: 320,
-              color: '#fff',
-              fontSize: 18,
-            }}
-          >
-            Live Now — Malam Minggu w/ DJ Lastri
-          </div>
-        </div>
-  
-        {/* Center */}
-  
-        <div
-          style={{
-            position: 'absolute',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            textAlign: 'center',
-          }}
-        >
-          <div
-            style={{
-              fontFamily: 'Instrument Serif, serif',
-              fontSize: 42,
-              lineHeight: 1,
-              color: '#fff',
-            }}
-          >
-            suratmiFM
-          </div>
-        </div>
-  
-        {/* Right */}
-  
-        <button
-          style={{
-            border: 'none',
-            background: 'transparent',
-            color: '#fff',
-            cursor: 'pointer',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 5,
-          }}
-        >
-          <span
-            style={{
-              width: 28,
-              height: 2,
-              background: '#fff',
-              display: 'block',
-            }}
-          />
-  
-          <span
-            style={{
-              width: 28,
-              height: 2,
-              background: '#fff',
-              display: 'block',
-            }}
-          />
-  
-          <span
-            style={{
-              width: 28,
-              height: 2,
-              background: '#fff',
-              display: 'block',
-            }}
-          />
-        </button>
-      </header>
-    )
+  const [open, setOpen] = useState(false)
+
+  const toggle = () => setOpen((prev) => !prev)
+  const close = () => setOpen(false)
+
+  const scrollToRequest = () => {
+    close()
+    const el = document.getElementById('song-request')
+    if (el) el.scrollIntoView({ behavior: 'smooth' })
   }
+
+  return (
+    <>
+      <header className="navbar">
+
+        {/* ── Row 1: Logo + Menu btn ── */}
+        <div className="navbar-row1">
+          <div className="navbar-logo">suratmiFM</div>
+          <button
+            className={`menu-btn${open ? ' open' : ''}`}
+            onClick={toggle}
+            aria-label="Toggle menu"
+            aria-expanded={open}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+        </div>
+
+        {/* ── Row 2: Play + Live badge ── */}
+        <div className="navbar-row2">
+          <button className="play-btn" aria-label="Play">▶</button>
+          <div className="live-badge">
+            <span className="live-dot" />
+            <span className="live-text">Live</span>
+            <span className="live-sep">—</span>
+            <span className="live-show">Suratmi FM 27 JUNI / Lucy Beer Mart Blok M</span>
+          </div>
+        </div>
+
+      </header>
+
+      {/* ── Overlay ── */}
+      <div
+        className={`drawer-overlay${open ? ' open' : ''}`}
+        onClick={close}
+        aria-hidden="true"
+      />
+
+      {/* ── Side drawer ── */}
+      <nav
+        className={`drawer${open ? ' open' : ''}`}
+        role="dialog"
+        aria-label="Navigation menu"
+      >
+        <div className="drawer-nav">
+          <a href="/" className="drawer-link active" onClick={close}>
+            <i className="ti ti-home" aria-hidden="true" /> Home
+          </a>
+          <a className="drawer-link drawer-link--request" onClick={scrollToRequest}>
+            <i className="ti ti-music" aria-hidden="true" /> Request Lagu
+          </a>
+          <a href="/jadwal" className="drawer-link" onClick={close}>
+            <i className="ti ti-calendar" aria-hidden="true" /> Jadwal
+          </a>
+          <a href="/about" className="drawer-link" onClick={close}>
+            <i className="ti ti-users" aria-hidden="true" /> About
+          </a>
+          <a href="/kontak" className="drawer-link" onClick={close}>
+            <i className="ti ti-mail" aria-hidden="true" /> Kontak
+          </a>
+        </div>
+
+        <div className="drawer-footer">
+          <p className="drawer-footer-label">suratmiFM © 2025</p>
+        </div>
+      </nav>
+    </>
+  )
+}
