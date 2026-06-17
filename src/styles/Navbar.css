@@ -11,6 +11,12 @@
   border-bottom: 1px solid #2a2a2a;
 }
 
+.navbar-logo img {
+  height: 50px;
+  width: auto;
+  display: block;
+}
+
 /* ── Row 1: Logo + Chat btn ── */
 .navbar-row1 {
   display: flex;
@@ -76,7 +82,7 @@
   }
 
   .navbar-logo {
-    font-size: 15px;
+    font-size: 20px;
   }
 }
 
@@ -135,6 +141,7 @@
   transition: color 0.2s;
 }
 .chat-btn svg{
+  color: #FF5A00;
   width: 40px;
   height: 40px;
 }

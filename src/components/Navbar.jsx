@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import '../styles/Navbar.css'
 
+
 const STORAGE_KEY = 'suratmifm_chat_messages'
 const NICK_KEY = 'suratmifm_chat_nickname'
 const DEFAULT_MESSAGES = [
@@ -98,7 +99,9 @@ export default function Navbar() {
 
         {/* ── Row 1: Logo + Chat btn ── */}
         <div className="navbar-row1">
-          <div className="navbar-logo">suratmiFM</div>
+        <div className="navbar-logo">
+  <img src="/suratmiFm.png" alt="SuratmiFM" />
+</div>
           <div className="chat-btn-wrap">
             <button
               className={`chat-btn${chatOpen ? ' open' : ''}`}

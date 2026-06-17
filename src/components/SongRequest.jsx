@@ -29,21 +29,20 @@ export default function SongRequest() {
           </div>
 
           <h2 className="song-request-title">
-            Tell us what
+          Lagi pengen denger
             <br />
-            should play next.
+            lagu apa?
           </h2>
 
           <p className="song-request-desc">
-            Punya lagu favorit yang ingin diputar di
-            SURATMIFM? Kirim request dan kami akan
-            memilih lagu-lagu terbaik untuk program
-            berikutnya.
+          Kirim lagu favoritmu dan biarkan kami
+  memutarnya di SuratmiFM. Siapa tahu
+  request-mu jadi soundtrack hari ini.
           </p>
 
           <div className="request-list">
             <div className="request-list-header">
-              <span>Recently Requested</span>
+              <span>Request Terbaru</span>
               <button
                 className="view-all-btn"
                 onClick={() => setModalOpen(true)}
@@ -64,9 +63,10 @@ export default function SongRequest() {
 
         <div className="song-request-ad">
           <span className="song-request-ad-label">Advertisement</span>
-          <div className="song-request-ad-banner">
-            <img src={AD_BANNER.src} alt={AD_BANNER.alt} />
-          </div>
+          <img
+  src="/promo.jpeg"
+  alt="Advertisement Banner"
+/>
         </div>
 
       </div>

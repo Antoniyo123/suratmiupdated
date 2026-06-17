@@ -45,9 +45,7 @@ export default function Preloader() {
           ))}
         </h1>
 
-        <p className="preloader-subtitle">
-          Community Event
-        </p>
+        
       </div>
 
     </div>

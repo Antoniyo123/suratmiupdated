@@ -1,6 +1,7 @@
 import {
     FaInstagram,
     FaYoutube,
+    FaEnvelope
   } from 'react-icons/fa'
   
   import { SiMixcloud } from 'react-icons/si'
@@ -10,13 +11,18 @@ import {
   export default function About() {
     const socials = [
       {
+        label: 'Email',
+        href: 'mailto:suratmi.fm.gmail.com',
+        icon: <FaEnvelope />,
+      },
+      {
         label: 'Instagram',
         href: 'https://instagram.com/suratmifm',
         icon: <FaInstagram />,
       },
       {
-        label: 'Mixcloud',
-        href: '#',
+        label: 'WhatsApp',
+        href: '+62 62 816-830-009',
         icon: <SiMixcloud />,
       },
       {
@@ -49,33 +55,22 @@ import {
             </h2>
   
             <p className="about__body">
-              SuratmiFM adalah event karaoke
-              interaktif yang menghadirkan
-              pengalaman bernyanyi yang berbeda.
-              Dipenuhi berbagai gimmick,
-              tantangan seru, kuis berhadiah,
-              dan lagu-lagu yang membuat semua
-              orang ikut bernyanyi bersama.
+            SuratmiFM adalah event karaoke interaktif yang memadukan keseruan bernyanyi bareng dengan gimmick seru dan kuis berhadiah.
+
             </p>
   
             <p className="about__body">
-              Setiap acara dirancang untuk
-              menciptakan momen yang tidak
-              terduga. Dari permainan spontan,
-              hadiah menarik, hingga suasana
-              penuh energi yang membuat
-              penonton dan peserta menjadi
-              bagian dari pertunjukan.
+            Bukan sekadar karaoke biasa, di sini batasan antara penonton dan penampil dilebur lewat atmosfer penuh energi. Ini adalah ruang buat seru-seruan, kenalan sama orang baru, dan pulang bawa cerita berkesan. Sing along, play games, and share the vibes!
             </p>
   
-            <p className="about__body">
+            {/* <p className="about__body">
               Bukan sekadar karaoke,
               SuratmiFM adalah tempat untuk
               bersenang-senang, bertemu orang
               baru, dan menciptakan kenangan
               yang akan terus dibicarakan
               setelah musik berhenti.
-            </p>
+            </p> */}
           </div>
   
           {/* RIGHT */}
@@ -118,7 +113,7 @@ import {
   
             <div className="about__info">
               <span>Jakarta, Indonesia</span>
-              <span>Independent Community Radio</span>
+              {/* <span>Independent Community Radio</span> */}
             </div>
   
           </div>

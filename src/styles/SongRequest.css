@@ -22,15 +22,26 @@
 }
 
 .song-request-title {
-  font-family: 'Instrument Serif', serif;
-  font-size: clamp(48px, 6vw, 82px);
-  line-height: 0.92;
-  font-weight: 400;
-  color: #e8e8e8;
-  margin: 0 0 24px;
+  font-family: 'JetBrains Mono', monospace;
+
+  font-size: clamp(28px, 8vw, 48px);
+  
+  
+  
+  margin: 0;
+  width: 100%;
+ 
+
+ 
+  font-size: clamp(20px, 8vw, 80px);
+  line-height: .9;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.04em;
 }
 
 .song-request-desc {
+  margin-top: 10px;
   max-width: 480px;
   color: #7a7a7a;
   line-height: 1.8;

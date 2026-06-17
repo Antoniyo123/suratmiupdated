@@ -48,15 +48,22 @@
 }
 
 .hero-upcoming-title {
-  font-family: 'Instrument Serif', Georgia, serif;
-  font-size: clamp(28px, 4vw, 48px);
-  font-weight: 300;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  color: #E8E8E8;
+  font-family: 'JetBrains Mono', monospace;
+
+  font-size: clamp(28px, 8vw, 48px);
+  
+  
+  
   margin: 0;
   width: 100%;
-  overflow-wrap: break-word;
+ 
+
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(20px, 8vw, 80px);
+  line-height: .9;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.04em;
 }
 
 .hero-upcoming-meta {
@@ -565,7 +572,7 @@
   }
 
   .hero-header {
-    padding-top: 78px;
+    padding-top: 100px;
     gap: 20px;
   }
 

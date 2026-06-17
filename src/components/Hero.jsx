@@ -32,8 +32,8 @@ const CARD_DATA = [
         '/img/pic5.jpg',
       ],
       eyebrow: 'Latest Mix',
-      title: 'SURATMI MIX 003:\nGingerale',
-      meta: 'Available on Mixcloud',
+      title: 'SURATMI Event:\n Sejauh ini',
+     
   
       description:
         'A one-hour mix exploring ambient textures, downtempo rhythms, and late-night listening sessions.',
@@ -225,9 +225,9 @@ function HeroCard({ card, onOpen }) {
         {/* Content */}
         <div className="hero-card-content">
   
-          <span className="hero-card-eyebrow">
+          {/* <span className="hero-card-eyebrow">
             {card.eyebrow}
-          </span>
+          </span> */}
   
           <h2 className="hero-card-title">
             {titleLines.map((line, i) => (
@@ -244,7 +244,7 @@ function HeroCard({ card, onOpen }) {
               {card.meta}
             </span>
   
-            <button
+            {/* <button
               className="hero-card-cta"
               style={{
                 '--accent': card.accent,
@@ -259,7 +259,7 @@ function HeroCard({ card, onOpen }) {
               </span>
   
               {card.cta}
-            </button>
+            </button> */}
   
           </div>
   

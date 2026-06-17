@@ -78,7 +78,8 @@
   
   .about__contact-title {
     margin: 0;
-    font-family: 'Instrument Serif', Georgia, serif;
+    font-family: 'JetBrains Mono', monospace;
+
   
     font-size: 32px;
     font-weight: 600;
