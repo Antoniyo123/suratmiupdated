@@ -58,7 +58,7 @@
   width: 100%;
  
 
-  font-family: 'JetBrains Mono', monospace;
+ 
   font-size: clamp(20px, 8vw, 80px);
   line-height: .9;
   font-weight: 700;

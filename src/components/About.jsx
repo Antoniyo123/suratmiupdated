@@ -47,11 +47,10 @@ import {
   
           <div className="about__text">
             <h2 className="about__heading">
-              More than
+            Bukan cuma karaoke.
               <br />
-              just karaoke.
-              <br />
-              It's a show.
+              Ini panggung buat seru-seruan bareng.
+             
             </h2>
   
             <p className="about__body">

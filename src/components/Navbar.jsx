@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+import { supabase } from '../lib/supabaseClient'
 import '../styles/Navbar.css'
 
 
@@ -35,7 +36,42 @@ export default function Navbar() {
 
   const toggleChat = () => setChatOpen((prev) => !prev)
   const closeChat = () => setChatOpen(false)
+ 
 
+
+  useEffect(() => {
+    const channel = supabase
+      .channel('chat-room')
+      .on(
+        'postgres_changes',
+        {
+          event: 'INSERT',
+          schema: 'public',
+          table: 'chat_messages',
+        },
+        (payload) => {
+          setMessages((prev) => [...prev, payload.new])
+        }
+      )
+      .subscribe()
+  
+    return () => {
+      supabase.removeChannel(channel)
+    }
+  }, [])
+
+  useEffect(() => {
+    const loadMessages = async () => {
+      const { data } = await supabase
+        .from('chat_messages')
+        .select('*')
+        .order('created_at', { ascending: true })
+  
+      setMessages(data || [])
+    }
+  
+    loadMessages()
+  }, [])
   // simpan pesan & nickname ke localStorage, jadi tetap ada saat refresh
   useEffect(() => {
     try {
@@ -43,6 +79,12 @@ export default function Navbar() {
     } catch {
       // storage penuh / diblok browser, abaikan
     }
+  }, [messages])
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({
+      behavior: 'smooth',
+    })
   }, [messages])
 
   useEffect(() => {
@@ -64,18 +106,18 @@ export default function Navbar() {
     setIsPlaying((prev) => !prev)
   }
 
-  const sendMessage = () => {
+  const sendMessage = async () => {
     const trimmed = input.trim()
+  
     if (!trimmed) return
-    const time = new Date().toLocaleTimeString('id-ID', {
-      hour: '2-digit',
-      minute: '2-digit',
-    })
-    const name = nickname.trim() || 'Anonim'
-    setMessages((prev) => [
-      ...prev,
-      { id: Date.now(), time, nickname: name, text: trimmed },
-    ])
+  
+    await supabase
+      .from('chat_messages')
+      .insert({
+        nickname: nickname.trim() || 'Anonim',
+        message: trimmed,
+      })
+  
     setInput('')
   }
 
@@ -155,6 +197,18 @@ export default function Navbar() {
       >
         <div className="chat-header">
           <span className="chat-header-label">Live Chat</span>
+          <span className="chat-header-count">
+  {messages.length} pesan
+</span>
+          <button
+    className="chat-close-btn"
+    onClick={closeChat}
+    aria-label="Close chat"
+  >
+    ✕
+  </button>
+  
+  
         </div>
 
         <div className="chat-messages">
@@ -162,13 +216,19 @@ export default function Navbar() {
             <div className="chat-message" key={msg.id}>
               <div className="chat-message-meta">
                 <span className="chat-message-nickname">{msg.nickname || 'Anonim'}</span>
-                <span className="chat-message-time">{msg.time}</span>
+                <span className="chat-message-time">
+  {new Date(msg.created_at).toLocaleTimeString('id-ID', {
+    hour: '2-digit',
+    minute: '2-digit',
+  })}
+</span>
               </div>
-              <span className="chat-message-text">{msg.text}</span>
+              <span className="chat-message-text">{msg.message}</span>
             </div>
           ))}
           <div ref={messagesEndRef} />
         </div>
+        
 
         <div className="chat-input-area">
           <input
