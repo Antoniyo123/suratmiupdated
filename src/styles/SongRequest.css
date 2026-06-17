@@ -1,180 +1,240 @@
 .song-request {
-    padding: 100px 24px;
-    border-top: 1px solid #1a1a1a;
-  }
-  
+  padding: 100px 24px;
+  border-top: 1px solid #1a1a1a;
+}
+
+.song-request-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 80px;
+  align-items: start;
+}
+
+.song-request-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #ff5a00;
+  margin-bottom: 20px;
+}
+
+.song-request-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(48px, 6vw, 82px);
+  line-height: 0.92;
+  font-weight: 400;
+  color: #e8e8e8;
+  margin: 0 0 24px;
+}
+
+.song-request-desc {
+  max-width: 480px;
+  color: #7a7a7a;
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+/* ---- Recent list ---- */
+
+.request-list {
+  margin-top: 48px;
+}
+
+.request-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.request-list-header span {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #ff5a00;
+}
+
+.view-all-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #f2eded;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.view-all-btn:hover {
+  color: #ff5a00;
+}
+
+.request-item {
+  padding: 14px 0;
+  border-bottom: 1px solid #1a1a1a;
+  color: #d5d5d5;
+  font-size: 15px;
+}
+
+/* ---- Ad banner (kolom kanan) ---- */
+
+.song-request-ad {
+  position: sticky;
+  top: 24px;
+  width: 220px;
+}
+
+.song-request-ad-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #4a4a4a;
+  margin-bottom: 10px;
+}
+
+.song-request-ad-banner {
+  width: 100%;
+  aspect-ratio: 220 / 480;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #1a1a1a;
+  background: #111;
+}
+
+.song-request-ad-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ====================== */
+/* TABLET */
+/* ====================== */
+
+@media (max-width: 1200px) {
   .song-request-grid {
-    max-width: 1400px;
-    margin: 0 auto;
-    display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 100px;
   }
-  
-  .song-request-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: #ff5a00;
-    margin-bottom: 20px;
+
+  .song-request-ad {
+    grid-column: 1 / -1;
+    position: static;
+    width: 100%;
+    order: 3;
   }
-  
+
+  .song-request-ad-banner {
+    aspect-ratio: 1400 / 220;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .song-request {
+    padding: 80px 24px;
+  }
+
+  .song-request-grid {
+    gap: 60px;
+  }
+
   .song-request-title {
-    font-family: 'Instrument Serif', serif;
-    font-size: clamp(48px, 6vw, 82px);
-    line-height: 0.92;
-    font-weight: 400;
-    color: #e8e8e8;
-    margin: 0 0 24px;
+    font-size: clamp(42px, 6vw, 64px);
   }
-  
+
   .song-request-desc {
-    max-width: 480px;
-    color: #7a7a7a;
-    line-height: 1.8;
-    font-size: 15px;
+    max-width: 100%;
   }
-  
-  /* ---- Recent list ---- */
-  
-  .request-list {
-    margin-top: 48px;
+}
+
+/* ====================== */
+/* MOBILE */
+/* ====================== */
+
+@media (max-width: 768px) {
+  .song-request {
+    padding: 70px 16px;
   }
-  
-  .request-list-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+
+  .song-request-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .song-request-label {
+    margin-bottom: 16px;
+  }
+
+  .song-request-title {
+    font-size: 44px;
+    line-height: 1;
     margin-bottom: 18px;
   }
-  
-  .request-list-header span {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #ff5a00;
+
+  .song-request-desc {
+    font-size: 14px;
+    line-height: 1.7;
   }
-  
-  .view-all-btn {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    font-family: 'DM Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #f2eded;
-    padding: 0;
-    transition: color 0.2s;
+
+  .request-list {
+    margin-top: 28px;
   }
-  
-  .view-all-btn:hover {
-    color: #ff5a00;
-  }
-  
+
   .request-item {
-    padding: 14px 0;
-    border-bottom: 1px solid #1a1a1a;
-    color: #d5d5d5;
-    font-size: 15px;
+    padding: 12px 0;
+    font-size: 14px;
   }
-  
-  /* ====================== */
-  /* TABLET */
-  /* ====================== */
-  
-  @media (max-width: 1024px) {
-    .song-request {
-      padding: 80px 24px;
-    }
-  
-    .song-request-grid {
-      gap: 60px;
-    }
-  
-    .song-request-title {
-      font-size: clamp(42px, 6vw, 64px);
-    }
-  
-    .song-request-desc {
-      max-width: 100%;
-    }
+
+  .song-request-ad-banner {
+    aspect-ratio: 4 / 3;
   }
-  
-  /* ====================== */
-  /* MOBILE */
-  /* ====================== */
-  
-  @media (max-width: 768px) {
-    .song-request {
-      padding: 70px 16px;
-    }
-  
-    .song-request-grid {
-      grid-template-columns: 1fr;
-      gap: 48px;
-    }
-  
-    .song-request-label {
-      margin-bottom: 16px;
-    }
-  
-    .song-request-title {
-      font-size: 44px;
-      line-height: 1;
-      margin-bottom: 18px;
-    }
-  
-    .song-request-desc {
-      font-size: 14px;
-      line-height: 1.7;
-    }
-  
-    .request-list {
-      margin-top: 28px;
-    }
-  
-    .request-item {
-      padding: 12px 0;
-      font-size: 14px;
-    }
+}
+
+/* ====================== */
+/* SMALL MOBILE */
+/* ====================== */
+
+@media (max-width: 480px) {
+  .song-request {
+    padding: 60px 16px;
   }
-  
-  /* ====================== */
-  /* SMALL MOBILE */
-  /* ====================== */
-  
-  @media (max-width: 480px) {
-    .song-request {
-      padding: 60px 16px;
-    }
-  
-    .song-request-title {
-      font-size: 36px;
-    }
-  
-    .song-request-desc {
-      font-size: 13px;
-    }
-  
-    .request-list-header span {
-      font-size: 9px;
-      letter-spacing: 1.5px;
-    }
-  
-    .request-item {
-      font-size: 13px;
-    }
+
+  .song-request-title {
+    font-size: 36px;
   }
-  
-  @media (max-width: 360px) {
-    .song-request-title {
-      font-size: 30px;
-    }
-  
-    .song-request-desc {
-      font-size: 12px;
-    }
+
+  .song-request-desc {
+    font-size: 13px;
   }
+
+  .request-list-header span {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+  }
+
+  .request-item {
+    font-size: 13px;
+  }
+
+  .song-request-ad-banner {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 360px) {
+  .song-request-title {
+    font-size: 30px;
+  }
+
+  .song-request-desc {
+    font-size: 12px;
+  }
+}

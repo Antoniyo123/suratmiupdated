@@ -8,404 +8,602 @@
 /* ── Section ─────────────────────────────────── */
 
 .hero {
-    padding-inline: 64px;
-    padding-block: 64px 0;
-    background: #0A0A0A;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
+  padding-inline: 64px;
+  padding-block: 64px 0;
+  background: #0A0A0A;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  overflow-x: hidden;
+}
+
+
+/* ── Header — dua kolom ──────────────────────── */
+
+.hero-header {
+  padding-top: 60px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  gap: 40px;
+  min-width: 0;
+}
+
+/* ── Kolom kiri: Upcoming Event ── */
+
+.hero-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.hero-eyebrow-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #FF5A00;
+}
+
+.hero-upcoming-title {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #E8E8E8;
+  margin: 0;
+  width: 100%;
+  overflow-wrap: break-word;
+}
+
+.hero-upcoming-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(232, 232, 232, 0.5);
+  margin: 0;
+}
+
+/* ── Kolom kanan: Request Lagu + running text ── */
+
+.hero-header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+  min-width: 0;
+}
+
+.hero-request-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 14px 22px;
+
+  background: #FF5A00;
+  color: #0A0A0A;
+
+  text-decoration: none;
+
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .12em;
+
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  transition: .25s;
+}
+
+.hero-request-cta:hover {
+  transform: translateY(-2px);
+  background: #ff6a1a;
+}
+
+/* Running text — placement iklan brand (sementara diisi PSA) */
+
+.hero-marquee {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  border-top: 1px solid rgba(232, 232, 232, 0.15);
+  border-bottom: 1px solid rgba(232, 232, 232, 0.15);
+  padding: 12px 0;
+}
+
+.hero-marquee-track {
+  display: inline-flex;
+  animation: hero-marquee-scroll 16s linear infinite;
+  will-change: transform;
+}
+
+.hero-marquee-item {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(232, 232, 232, 0.45);
+  padding-right: 48px;
+  flex-shrink: 0;
+}
+
+@keyframes hero-marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-marquee-track {
+    animation: none;
   }
-  
-  
-  /* ── Header ──────────────────────────────────── */
-  
-  .hero-header-content {
-    max-width: 640px;
+}
+
+
+/* ── Grid — dua card berdampingan ────────────── */
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  /* Card memanjang sampai batas section */
+  margin-inline: -64px;
+  padding-inline: 64px;
+  padding-bottom: 0;
+}
+
+
+/* ── Card ────────────────────────────────────── */
+
+.hero-card {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  background: #111;
+  cursor: pointer;
+}
+
+/* Sedikit corner radius — beda dari RRO yang flat */
+.hero-card:first-child { border-radius: 4px 0 0 0; }
+.hero-card:last-child  { border-radius: 0 4px 0 0; }
+
+
+/* ── Card Instagram (kolom kiri, widget Behold) ──── */
+
+.hero-card--instagram {
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+  background: #111;
+  padding: 20px;
+}
+
+.hero-card-instagram-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-shrink: 0;
+}
+
+.hero-card-ig-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(232, 232, 232, 0.6);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.hero-card-ig-link:hover {
+  color: #FF5A00;
+}
+
+.hero-card-instagram-desc {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 20px;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  color: rgba(224, 212, 212, 0.959);
+  margin: 16px 0 0;
+  flex-shrink: 0;
+}
+
+.hero-card-instagram-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  border-radius: 4px;
+}
+
+/* Behold widget mengikuti tema gelap lewat CSS variables —
+   styling lengkap tetap diatur dari dashboard Behold. */
+.hero-card-instagram-body behold-widget {
+  display: block;
+  width: 100%;
+}
+
+
+/* ── Images — stack, satu aktif ──────────────── */
+
+.hero-card-images {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-card-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.6s ease, transform 0.8s ease;
+  transform: scale(1.04);
+}
+
+.hero-card-image.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+
+/* ── Overlay gradient ────────────────────────── */
+
+.hero-card-overlay {
+  position: absolute;
+  inset: 0;
+  /* Lebih agresif di bawah untuk teks */
+  background: linear-gradient(
+    to top,
+    rgba(5, 5, 5, 0.96) 0%,
+    rgba(5, 5, 5, 0.5)  40%,
+    rgba(5, 5, 5, 0.1)  70%,
+    transparent         100%
+  );
+  z-index: 1;
+}
+
+
+/* ── Arrow buttons ───────────────────────────── */
+
+.hero-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  background: rgba(10, 10, 10, 0.55);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(232, 232, 232, 0.15);
+  color: #E8E8E8;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.hero-card:hover .hero-arrow {
+  opacity: 1;
+}
+
+.hero-arrow:hover {
+  background: rgba(255, 90, 0, 0.9);
+  border-color: #FF5A00;
+}
+
+.hero-arrow--prev { left: 16px; }
+.hero-arrow--next { right: 16px; }
+
+
+/* ── Dot indicators ──────────────────────────── */
+
+.hero-dots {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 3;
+  display: flex;
+  gap: 6px;
+}
+
+.hero-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(232, 232, 232, 0.3);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.hero-dot.is-active {
+  background: #FF5A00;
+  transform: scale(1.3);
+}
+
+
+/* ── Content area ────────────────────────────── */
+
+.hero-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding: 32px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hero-card-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #FF5A00;
+}
+
+.hero-card-title {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: clamp(22px, 2.4vw, 36px);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #E8E8E8;
+  margin: 0;
+}
+
+.hero-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 4px;
+}
+
+.hero-card-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: rgba(232, 232, 232, 0.45);
+  text-transform: uppercase;
+}
+
+.hero-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid var(--accent, #FF5A00);
+  color: var(--accent, #FF5A00);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+}
+
+.hero-card-cta:hover {
+  background: var(--accent, #FF5A00);
+  color: #0A0A0A;
+}
+
+.hero-cta-icon {
+  font-size: 8px;
+}
+
+
+/* =============================================
+   TABLET  (≤ 1024px)
+   ============================================= */
+
+@media (max-width: 1024px) {
+
+  .hero {
+    padding-inline: 40px;
+    padding-block: 48px 0;
+    gap: 32px;
   }
-  
-  .hero-subtitle {
-    margin-top: 16px;
-  
-    color: rgba(232,232,232,.65);
-  
-    font-size: 15px;
-    line-height: 1.8;
-  
-    max-width: 460px;
+
+  .hero-header {
+    padding-top: 48px;
+    gap: 28px;
   }
-  
+
+  .hero-header-right {
+    align-items: stretch;
+  }
+
   .hero-request-cta {
-    margin-top: 24px;
-  
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-  
-    padding: 14px 22px;
-  
-    background: #FF5A00;
-    color: #0A0A0A;
-  
-    text-decoration: none;
-  
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: .12em;
-  
-    text-transform: uppercase;
-  
-    transition: .25s;
+    align-self: flex-start;
+    padding: 12px 18px;
+    font-size: 10px;
   }
-  
-  .hero-request-cta:hover {
-    transform: translateY(-2px);
-    background: #ff6a1a;
+
+  .hero-marquee-item {
+    font-size: 10px;
+    padding-right: 36px;
   }
-  
-  .hero-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: #FF5A00;
-    flex-shrink: 0;
-  }
-  
-  .hero-title {
-    font-family: 'Instrument Serif', Georgia, serif;
-    font-size: clamp(48px, 8vw, 120px);
-    font-weight: 300;
-    line-height: 0.9;
-    letter-spacing: -0.04em;
-    color: #E8E8E8;
-    margin: 0;
-    text-align: right;
-  }
-  
-  
-  /* ── Grid — dua card berdampingan ────────────── */
-  
+
   .hero-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    /* Card memanjang sampai batas section */
-    margin-inline: -64px;
-    padding-inline: 64px;
-    padding-bottom: 0;
+    margin-inline: -40px;
+    padding-inline: 40px;
   }
-  
-  
-  /* ── Card ────────────────────────────────────── */
-  
+
   .hero-card {
-    position: relative;
-    overflow: hidden;
-    aspect-ratio: 3 / 4;
-    background: #111;
-    cursor: pointer;
+    aspect-ratio: 2 / 3;
   }
-  
-  /* Sedikit corner radius — beda dari RRO yang flat */
-  .hero-card:first-child { border-radius: 4px 0 0 0; }
-  .hero-card:last-child  { border-radius: 0 4px 0 0; }
-  
-  
-  /* ── Images — stack, satu aktif ──────────────── */
-  
-  .hero-card-images {
-    position: absolute;
-    inset: 0;
-  }
-  
-  .hero-card-image {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 0.6s ease, transform 0.8s ease;
-    transform: scale(1.04);
-  }
-  
-  .hero-card-image.is-active {
-    opacity: 1;
-    transform: scale(1);
-  }
-  
-  
-  /* ── Overlay gradient ────────────────────────── */
-  
-  .hero-card-overlay {
-    position: absolute;
-    inset: 0;
-    /* Lebih agresif di bawah untuk teks */
-    background: linear-gradient(
-      to top,
-      rgba(5, 5, 5, 0.96) 0%,
-      rgba(5, 5, 5, 0.5)  40%,
-      rgba(5, 5, 5, 0.1)  70%,
-      transparent         100%
-    );
-    z-index: 1;
-  }
-  
-  
-  /* ── Arrow buttons ───────────────────────────── */
-  
-  .hero-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 3;
-    background: rgba(10, 10, 10, 0.55);
-    backdrop-filter: blur(4px);
-    border: 1px solid rgba(232, 232, 232, 0.15);
-    color: #E8E8E8;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    font-size: 16px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.2s ease, background 0.2s ease, border-color 0.2s ease;
-  }
-  
-  .hero-card:hover .hero-arrow {
-    opacity: 1;
-  }
-  
-  .hero-arrow:hover {
-    background: rgba(255, 90, 0, 0.9);
-    border-color: #FF5A00;
-  }
-  
-  .hero-arrow--prev { left: 16px; }
-  .hero-arrow--next { right: 16px; }
-  
-  
-  /* ── Dot indicators ──────────────────────────── */
-  
-  .hero-dots {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    z-index: 3;
-    display: flex;
-    gap: 6px;
-  }
-  
-  .hero-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: rgba(232, 232, 232, 0.3);
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    transition: background 0.2s ease, transform 0.2s ease;
-  }
-  
-  .hero-dot.is-active {
-    background: #FF5A00;
-    transform: scale(1.3);
-  }
-  
-  
-  /* ── Content area ────────────────────────────── */
-  
+
   .hero-card-content {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 2;
-    padding: 32px 28px 28px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    padding: 24px 20px 20px;
   }
-  
-  .hero-card-eyebrow {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #FF5A00;
+}
+
+
+/* =============================================
+   MOBILE  (≤ 768px)
+   ============================================= */
+
+@media (max-width: 768px) {
+
+  .hero {
+    padding-inline: 24px;
+    padding-block: 40px 0;
+    gap: 24px;
   }
-  
-  .hero-card-title {
-    font-family: 'Instrument Serif', Georgia, serif;
-    font-size: clamp(22px, 2.4vw, 36px);
-    font-weight: 300;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    color: #E8E8E8;
-    margin: 0;
+
+  .hero-header {
+    grid-template-columns: 1fr;
+    /* hindari konten ketutup navbar 2 baris di mobile */
+    padding-top: 86px;
+    gap: 24px;
   }
-  
-  .hero-card-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    margin-top: 4px;
-  }
-  
-  .hero-card-meta {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.08em;
-    color: rgba(232, 232, 232, 0.45);
-    text-transform: uppercase;
-  }
-  
-  .hero-card-cta {
-    display: inline-flex;
-    align-items: center;
+
+  .hero-header-left {
     gap: 8px;
-    background: transparent;
-    border: 1px solid var(--accent, #FF5A00);
-    color: var(--accent, #FF5A00);
-    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .hero-eyebrow-label {
     font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 8px 14px;
-    cursor: pointer;
-    border-radius: 2px;
-    transition: background 0.2s ease, color 0.2s ease;
-    white-space: nowrap;
   }
-  
-  .hero-card-cta:hover {
-    background: var(--accent, #FF5A00);
-    color: #0A0A0A;
+
+  .hero-upcoming-title {
+    font-size: clamp(26px, 7vw, 38px);
   }
-  
-  .hero-cta-icon {
-    font-size: 8px;
+
+  .hero-upcoming-meta {
+    font-size: 11px;
   }
-  
-  
-  /* =============================================
-     TABLET  (≤ 1024px)
-     ============================================= */
-  
-  @media (max-width: 1024px) {
-  
-    .hero {
-      padding-inline: 40px;
-      padding-block: 48px 0;
-      gap: 32px;
-    }
-  
-    .hero-grid {
-      margin-inline: -40px;
-      padding-inline: 40px;
-    }
-  
-    .hero-card {
-      aspect-ratio: 2 / 3;
-    }
-  
-    .hero-card-content {
-      padding: 24px 20px 20px;
-    }
+
+  .hero-header-right {
+    width: 100%;
+    gap: 14px;
   }
-  
-  
-  /* =============================================
-     MOBILE  (≤ 768px)
-     ============================================= */
-  
-  @media (max-width: 768px) {
-  
-    .hero {
-      padding-inline: 24px;
-      padding-block: 40px 0;
-      gap: 24px;
-    }
-  
-    .hero-header {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 8px;
-    }
-  
-    .hero-title {
-        padding-top: 86px;
-      text-align: left;
-      font-size: clamp(40px, 12vw, 72px);
-    }
-  
-    /* Stack cards vertikal di mobile */
-    .hero-grid {
-      grid-template-columns: 1fr;
-      margin-inline: -24px;
-      padding-inline: 24px;
-      gap: 8px;
-    }
-  
-    .hero-card {
-      aspect-ratio: 4 / 3;
-    }
-  
-    .hero-card:first-child { border-radius: 4px 4px 0 0; }
-    .hero-card:last-child  { border-radius: 0 0 0 0; }
-  
-    /* Arrow selalu tampil di touch */
-    .hero-arrow {
-      opacity: 1;
-      width: 36px;
-      height: 36px;
-      font-size: 14px;
-    }
-  
-    .hero-card-content {
-      padding: 20px 16px 16px;
-      gap: 8px;
-    }
-  
-    .hero-card-footer {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 10px;
-    }
+
+  .hero-request-cta {
+    width: 100%;
+    justify-content: center;
+    padding: 13px 20px;
+    font-size: 10.5px;
   }
-  
-  
-  /* =============================================
-     SMALL MOBILE  (≤ 480px)
-     ============================================= */
-  
-  @media (max-width: 480px) {
-  
-    .hero {
-      padding-inline: 16px;
-      gap: 20px;
-    }
-  
-    .hero-grid {
-      margin-inline: -16px;
-      padding-inline: 16px;
-    }
-  
-    .hero-card {
-      aspect-ratio: 1 / 1;
-    }
-  
-    .hero-arrow {
-      width: 32px;
-      height: 32px;
-      font-size: 12px;
-    }
-  
-    .hero-arrow--prev { left: 10px; }
-    .hero-arrow--next { right: 10px; }
+
+  .hero-marquee {
+    padding: 10px 0;
   }
+
+  .hero-marquee-item {
+    font-size: 10px;
+    padding-right: 32px;
+  }
+
+  /* Stack cards vertikal di mobile */
+  .hero-grid {
+    grid-template-columns: 1fr;
+    margin-inline: -24px;
+    padding-inline: 24px;
+    gap: 8px;
+  }
+
+  .hero-card {
+    aspect-ratio: 4 / 3;
+  }
+
+  .hero-card:first-child { border-radius: 4px 4px 0 0; }
+  .hero-card:last-child  { border-radius: 0 0 0 0; }
+
+  /* Arrow selalu tampil di touch */
+  .hero-arrow {
+    opacity: 1;
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .hero-card-content {
+    padding: 20px 16px 16px;
+    gap: 8px;
+  }
+
+  .hero-card-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+
+
+/* =============================================
+   SMALL MOBILE  (≤ 480px)
+   ============================================= */
+
+@media (max-width: 480px) {
+
+  .hero {
+    padding-inline: 16px;
+    gap: 20px;
+  }
+
+  .hero-header {
+    padding-top: 78px;
+    gap: 20px;
+  }
+
+  .hero-eyebrow-label {
+    font-size: 9.5px;
+    letter-spacing: 0.14em;
+  }
+
+  .hero-upcoming-meta {
+    font-size: 10px;
+  }
+
+  .hero-request-cta {
+    padding: 12px 18px;
+    font-size: 10px;
+    letter-spacing: .1em;
+  }
+
+  .hero-marquee-item {
+    font-size: 9.5px;
+    padding-right: 24px;
+  }
+
+  .hero-grid {
+    margin-inline: -16px;
+    padding-inline: 16px;
+  }
+
+  .hero-card {
+    aspect-ratio: 1 / 1;
+  }
+
+  .hero-arrow {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+
+  .hero-arrow--prev { left: 10px; }
+  .hero-arrow--next { right: 10px; }
+}

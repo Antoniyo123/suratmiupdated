@@ -2,28 +2,28 @@ import { useState } from 'react'
 import '../styles/Hero.css'
 import HeroDetailModal from './HeroDetailModal'
 
+// ── Data statis: Upcoming Event (kolom kiri) ──
+// Ganti/sambungkan ke data dinamis nanti.
+const UPCOMING_EVENT = {
+  label: 'Upcoming Event',
+  title: 'Suratmi FM X The Perompaks',
+  meta: 'Sabtu, 21 Jun · 21:00 WIB · Lucy Beer Mart Blok M',
+}
 
+// ── Data statis: Running text PSA (kolom kanan) ──
+// Placement iklan brand nanti tinggal disisipkan ke array ini.
+const MARQUEE_ITEMS = [
+  'Jangan berkendara ketika mabuk',
+]
+
+// ── Instagram feed (Behold.so) ──
+// 1. Daftar di https://behold.so, hubungkan akun Instagram @suratmifm
+// 2. Buat widget feed, lalu copy feedId dari "Embed Code" di dashboard
+// 3. Tempel feedId di sini. Layout/jumlah post diatur dari dashboard Behold,
+//    bukan dari kode ini.
+const BEHOLD_FEED_ID = 'OFjQBt3BoCQiR3Zlhv0p'
 
 const CARD_DATA = [
-    {
-      id: 'live',
-      images: [
-        '/img/pic.jpg',
-        '/img/pic1.jpg',
-        '/img/pic2.jpg',
-      ],
-      eyebrow: 'Suratmi FM Lucy Beer Mart Blok M',
-      title: 'Suratmi FM X The Perompaks\nw/ Suratmi FM',
-      meta: 'Every Saturday · 21:00 WIB',
-  
-      description:
-        'Program musik elektronik mingguan yang menghadirkan pilihan house, disco, balearic, dan leftfield dance music untuk menemani malam minggu.',
-  
-      cta: 'Listen Live',
-      ctaIcon: '▶',
-      accent: '#FF5A00',
-    },
-  
     {
       id: 'mix',
       images: [
@@ -52,28 +52,49 @@ const CARD_DATA = [
       <section className="hero">
   
         <div className="hero-header">
-          <div className="hero-header-content">
-  
-            <h1 className="hero-title">
-              SuratmiFM
-            </h1>
-  
-            <p className="hero-subtitle">
-              Request a track, send a shoutout,
-              or dedicate a song live on air.
+
+          {/* ── Kolom kiri: Upcoming Event ── */}
+          <div className="hero-header-left">
+            <span className="hero-eyebrow-label">
+              {UPCOMING_EVENT.label}
+            </span>
+            <h2 className="hero-upcoming-title">
+              {UPCOMING_EVENT.title}
+            </h2>
+            <p className="hero-upcoming-meta">
+              {UPCOMING_EVENT.meta}
             </p>
-  
+          </div>
+
+          {/* ── Kolom kanan: Request Lagu + running text ── */}
+          <div className="hero-header-right">
             <a
               href="#song-request"
               className="hero-request-cta"
             >
               REQUEST A SONG →
             </a>
-  
+
+            <div className="hero-marquee" aria-label="Pengumuman">
+              <div className="hero-marquee-track">
+                {/* Render 2x supaya loop scroll -50% mulus tanpa gap */}
+                {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, i) => (
+                  <span className="hero-marquee-item" key={`${item}-${i}`}>
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
+
         </div>
   
         <div className="hero-grid">
+
+          {/* ── Card kiri: Instagram feed langsung (Behold) ── */}
+          <InstagramFeedCard feedId={BEHOLD_FEED_ID} />
+
+          {/* ── Card kanan: tetap modal poster/video/gif ── */}
           {CARD_DATA.map((card) => (
             <HeroCard
               key={card.id}
@@ -97,6 +118,35 @@ const CARD_DATA = [
       </section>
     )
   }
+
+function InstagramFeedCard({ feedId }) {
+  return (
+    <div className="hero-card hero-card--instagram">
+      <div className="hero-card-instagram-header">
+        <span className="hero-card-eyebrow">@suratmifm</span>
+        <a
+          className="hero-card-ig-link"
+          href="https://www.instagram.com/suratmi.fm"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Buka Instagram →
+        </a>
+      </div>
+
+      <div className="hero-card-instagram-body">
+        {/* Widget Behold — load script CDN sekali di index.html:
+            <script src="https://w.behold.so/widget.js" type="module"></script>
+            lalu render web component-nya di sini. */}
+        <behold-widget feed-id={feedId}></behold-widget>
+      </div>
+
+      <p className="hero-card-instagram-desc">
+        Lihat seluruh keseruan kami di Instagram
+      </p>
+    </div>
+  )
+}
 
 function HeroCard({ card, onOpen }) {
     const [index, setIndex] = useState(0)

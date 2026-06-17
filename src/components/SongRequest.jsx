@@ -10,6 +10,12 @@ const RECENT_REQUESTS = [
   'Konservatif — The Adams',
 ]
 
+// Placeholder banner iklan — ganti src ini kalau sudah ada aset brand.
+const AD_BANNER = {
+  src: 'https://placehold.co/220x480/1a1a1a/ff5a00?text=AD',
+  alt: 'Ad placement',
+}
+
 export default function SongRequest() {
   const [modalOpen, setModalOpen] = useState(false)
 
@@ -55,6 +61,13 @@ export default function SongRequest() {
         </div>
 
         <SongRequestForm />
+
+        <div className="song-request-ad">
+          <span className="song-request-ad-label">Advertisement</span>
+          <div className="song-request-ad-banner">
+            <img src={AD_BANNER.src} alt={AD_BANNER.alt} />
+          </div>
+        </div>
 
       </div>
 
