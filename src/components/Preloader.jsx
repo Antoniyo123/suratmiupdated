@@ -1,7 +1,5 @@
 import '../styles/Preloader.css'
 
-const letters = 'SuratmiFM'.split('')
-
 const images = [
   '/img/pic.jpg',
   '/img/pic1.jpg',
@@ -32,20 +30,11 @@ export default function Preloader() {
       <div className="preloader-overlay" />
 
       <div className="preloader-content">
-        <h1 className="preloader-title">
-          {letters.map((letter, index) => (
-            <span
-              key={index}
-              style={{
-                animationDelay: `${index * 0.12}s`,
-              }}
-            >
-              {letter}
-            </span>
-          ))}
-        </h1>
-
-        
+        <img
+          src="/suratmiFm.png"
+          alt="SuratmiFM"
+          className="preloader-logo"
+        />
       </div>
 
     </div>
