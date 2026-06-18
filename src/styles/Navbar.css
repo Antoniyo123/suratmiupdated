@@ -199,7 +199,7 @@
   position: fixed;
   top: 0;
   right: 0;
-  width: 280px;
+  width: 340px;
   height: 100vh;
   background: #141414;
   border-left: 1px solid #2e2e2e;
@@ -216,7 +216,7 @@
   .drawer {
     /* dua baris: 52px row1 + ~45px row2 */
     padding-top: 97px;
-    width: 88vw;
+    width: 92vw;
   }
 }
 
@@ -231,6 +231,28 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
+}
+
+.chat-header-left {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+}
+
+.chat-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ff5a00;
+  flex-shrink: 0;
+  animation: chat-live-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes chat-live-pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.25; }
 }
 
 .chat-header-label {
@@ -239,12 +261,14 @@
   letter-spacing: 2px;
   text-transform: uppercase;
   color: #ff5a00;
+  flex-shrink: 0;
 }
 
 .chat-header-count {
   font-size: 9px;
   color: #666;
   font-family: 'DM Mono', monospace;
+  white-space: nowrap;
 }
 
 .chat-close-btn {
@@ -266,15 +290,15 @@
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  padding: 16px;
+  gap: 16px;
+  padding: 18px;
 }
 
 .chat-message {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  max-width: 78%;
+  gap: 5px;
+  max-width: 88%;
   align-self: flex-start;
 }
 
@@ -297,7 +321,7 @@
 
 .chat-message-nickname {
   font-family: 'DM Mono', monospace;
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 1px;
   text-transform: uppercase;
   color: #ff5a00;
@@ -305,7 +329,7 @@
 
 .chat-message-time {
   font-family: 'DM Mono', monospace;
-  font-size: 8px;
+  font-size: 9px;
   letter-spacing: 1px;
   color: #444;
   flex-shrink: 0;
@@ -313,13 +337,13 @@
 
 .chat-message-bubble {
   font-family: 'DM Mono', monospace;
-  font-size: 12px;
-  line-height: 1.5;
+  font-size: 14px;
+  line-height: 1.6;
   color: #ddd;
   background: #1c1c1c;
   border: 1px solid #262626;
-  padding: 9px 13px;
-  border-radius: 14px 14px 14px 4px;
+  padding: 12px 16px;
+  border-radius: 16px 16px 16px 4px;
   word-break: break-word;
 }
 
@@ -328,7 +352,7 @@
   background: #ff5a00;
   border-color: #ff5a00;
   color: #0c0c0c;
-  border-radius: 14px 14px 4px 14px;
+  border-radius: 16px 16px 4px 16px;
 }
 
 /* ── Chat input ── */
@@ -360,6 +384,14 @@
 
 .chat-nickname-input:focus {
   border-color: #ff5a00;
+}
+
+.chat-filter-warning {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.3px;
+  color: #ff5a00;
+  line-height: 1.4;
 }
 
 .chat-input-row {

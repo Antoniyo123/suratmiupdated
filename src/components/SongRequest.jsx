@@ -64,7 +64,7 @@ export default function SongRequest() {
         <div className="song-request-ad">
           <span className="song-request-ad-label">Advertisement</span>
           <img
-  src="/promo.jpeg"
+  src="/poster.png"
   alt="Advertisement Banner"
 />
         </div>

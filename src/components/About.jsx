@@ -1,7 +1,8 @@
 import {
     FaInstagram,
     FaYoutube,
-    FaEnvelope
+    FaEnvelope,
+    FaWhatsapp
   } from 'react-icons/fa'
   
   import { SiMixcloud } from 'react-icons/si'
@@ -12,7 +13,7 @@ import {
     const socials = [
       {
         label: 'Email',
-        href: 'mailto:suratmi.fm.gmail.com',
+        href: 'mailto:suratmi.fm@gmail.com',
         icon: <FaEnvelope />,
       },
       {
@@ -22,14 +23,14 @@ import {
       },
       {
         label: 'WhatsApp',
-        href: '+62 62 816-830-009',
-        icon: <SiMixcloud />,
-      },
-      {
-        label: 'Youtube',
-        href: '#',
-        icon: <FaYoutube />,
-      },
+        href: 'https://wa.me/62816830009',
+        icon: <FaWhatsapp />,
+      }
+      // {
+      //   label: 'Youtube',
+      //   href: 'https://youtube.com/@suratmifm',
+      //   icon: <FaYoutube />,
+      // },
     ]
   
     return (

@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { supabase } from '../lib/supabaseClient'
+import { containsBadWord } from '../utils/chatFilter'
 import '../styles/Navbar.css'
 
 
@@ -41,6 +42,7 @@ export default function Navbar() {
     }
   })
   const [input, setInput] = useState('')
+  const [filterWarning, setFilterWarning] = useState('')
   const [isPlaying, setIsPlaying] = useState(false)
 
   const audioRef = useRef(null)
@@ -131,6 +133,11 @@ export default function Navbar() {
 
     if (!trimmed) return
 
+    if (containsBadWord(trimmed)) {
+      setFilterWarning('Pesan kamu mengandung kata yang tidak diperbolehkan, coba diubah ya 🙏')
+      return
+    }
+
     const { data } = await supabase
       .from('chat_messages')
       .insert({
@@ -146,6 +153,7 @@ export default function Navbar() {
 
     setInput('')
     setNickname('') // form nickname dikosongkan lagi tiap habis kirim pesan
+    setFilterWarning('')
   }
 
   const handleKeyDown = (e) => {
@@ -223,10 +231,11 @@ export default function Navbar() {
         aria-label="Live chat"
       >
         <div className="chat-header">
-          <span className="chat-header-label">Live Chat</span>
-          <span className="chat-header-count">
-  {messages.length} pesan
-</span>
+          <div className="chat-header-left">
+            <span className="chat-live-dot" aria-hidden="true" />
+            <span className="chat-header-label">Live Chat</span>
+            <span className="chat-header-count">· {messages.length} pesan</span>
+          </div>
           <button
     className="chat-close-btn"
     onClick={closeChat}
@@ -278,14 +287,21 @@ export default function Navbar() {
             onChange={(e) => setNickname(e.target.value)}
             maxLength={20}
           />
+          {filterWarning && (
+            <span className="chat-filter-warning">{filterWarning}</span>
+          )}
           <div className="chat-input-row">
             <input
               type="text"
               className="chat-input"
               placeholder="Tulis pesan..."
               value={input}
-              onChange={(e) => setInput(e.target.value)}
+              onChange={(e) => {
+                setInput(e.target.value)
+                if (filterWarning) setFilterWarning('')
+              }}
               onKeyDown={handleKeyDown}
+              maxLength={300}
             />
             <button
               className="chat-send-btn"
