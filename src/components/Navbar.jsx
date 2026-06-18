@@ -5,6 +5,7 @@ import '../styles/Navbar.css'
 
 const STORAGE_KEY = 'suratmifm_chat_messages'
 const NICK_KEY = 'suratmifm_chat_nickname'
+const OWN_IDS_KEY = 'suratmifm_own_message_ids'
 const DEFAULT_MESSAGES = [
   { id: 1, time: '12:00', nickname: 'suratmiFM', text: 'Halo! Tulis pesan kalian di sini, ya.' },
 ]
@@ -28,6 +29,17 @@ export default function Navbar() {
       return ''
     }
   })
+  // id pesan-pesan yang dikirim dari browser ini, dipakai buat nentuin
+  // bubble mana yang "punya sendiri" vs punya orang lain
+  const [ownIds, setOwnIds] = useState(() => {
+    if (typeof window === 'undefined') return []
+    try {
+      const saved = localStorage.getItem(OWN_IDS_KEY)
+      return saved ? JSON.parse(saved) : []
+    } catch {
+      return []
+    }
+  })
   const [input, setInput] = useState('')
   const [isPlaying, setIsPlaying] = useState(false)
 
@@ -36,7 +48,7 @@ export default function Navbar() {
 
   const toggleChat = () => setChatOpen((prev) => !prev)
   const closeChat = () => setChatOpen(false)
- 
+
 
 
   useEffect(() => {
@@ -54,7 +66,7 @@ export default function Navbar() {
         }
       )
       .subscribe()
-  
+
     return () => {
       supabase.removeChannel(channel)
     }
@@ -66,10 +78,10 @@ export default function Navbar() {
         .from('chat_messages')
         .select('*')
         .order('created_at', { ascending: true })
-  
+
       setMessages(data || [])
     }
-  
+
     loadMessages()
   }, [])
   // simpan pesan & nickname ke localStorage, jadi tetap ada saat refresh
@@ -95,6 +107,14 @@ export default function Navbar() {
     }
   }, [nickname])
 
+  useEffect(() => {
+    try {
+      localStorage.setItem(OWN_IDS_KEY, JSON.stringify(ownIds))
+    } catch {
+      // abaikan
+    }
+  }, [ownIds])
+
   const togglePlay = () => {
     const audio = audioRef.current
     if (!audio) return
@@ -108,17 +128,24 @@ export default function Navbar() {
 
   const sendMessage = async () => {
     const trimmed = input.trim()
-  
+
     if (!trimmed) return
-  
-    await supabase
+
+    const { data } = await supabase
       .from('chat_messages')
       .insert({
         nickname: nickname.trim() || 'Anonim',
         message: trimmed,
       })
-  
+      .select()
+      .single()
+
+    if (data?.id) {
+      setOwnIds((prev) => [...prev, data.id])
+    }
+
     setInput('')
+    setNickname('') // form nickname dikosongkan lagi tiap habis kirim pesan
   }
 
   const handleKeyDown = (e) => {
@@ -207,28 +234,40 @@ export default function Navbar() {
   >
     ✕
   </button>
-  
-  
+
+
         </div>
 
         <div className="chat-messages">
-          {messages.map((msg) => (
-            <div className="chat-message" key={msg.id}>
-              <div className="chat-message-meta">
-                <span className="chat-message-nickname">{msg.nickname || 'Anonim'}</span>
-                <span className="chat-message-time">
-  {new Date(msg.created_at).toLocaleTimeString('id-ID', {
-    hour: '2-digit',
-    minute: '2-digit',
-  })}
-</span>
+          {messages.map((msg) => {
+            const isOwn = ownIds.includes(msg.id)
+            const time = msg.created_at
+              ? new Date(msg.created_at).toLocaleTimeString('id-ID', {
+                  hour: '2-digit',
+                  minute: '2-digit',
+                })
+              : msg.time
+
+            return (
+              <div
+                className={`chat-message${isOwn ? ' chat-message--own' : ''}`}
+                key={msg.id}
+              >
+                <div className="chat-message-meta">
+                  <span className="chat-message-nickname">
+                    {isOwn ? 'Kamu' : msg.nickname || 'Anonim'}
+                  </span>
+                  <span className="chat-message-time">{time}</span>
+                </div>
+                <span className="chat-message-bubble">
+                  {msg.message ?? msg.text}
+                </span>
               </div>
-              <span className="chat-message-text">{msg.message}</span>
-            </div>
-          ))}
+            )
+          })}
           <div ref={messagesEndRef} />
         </div>
-        
+
 
         <div className="chat-input-area">
           <input
