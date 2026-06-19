@@ -3,7 +3,7 @@
 const BLOCKED_WORDS = [
     // Indonesia
     'anjing', 'bangsat', 'kontol', 'memek', 'goblok', 'tolol', 'tai',
-    'asu', 'babi', 'kampret', 'bajingan', 'pepek', 'jancok', 'jancuk', 'anjg', 'anj', 'mmk', 'ajg', 'ngentot', 'ngntt', 'ngewe', 'ngews', 'bj', 'ngens', 'blowjob', 'bajingan', 'sange', 'horny', 'najis', 'kontool', 'anj1n9', 'babhi', 'tayi'
+    'asu', 'babi', 'kampret', 'bajingan', 'pepek', 'jancok', 'jancuk', 'anjg', 'anj', 'mmk', 'ajg', 'ngentot', 'ngntt', 'ngewe', 'ngews', 'bj', 'ngens', 'blowjob', 'bajingan', 'sange', 'horny', 'najis', 'kontool', 'anj1n9', 'babhi', 'tayi',
     // English
     'fuck', 'shit', 'bitch', 'asshole', 'bastard', 'cunt', 'dick',
     
