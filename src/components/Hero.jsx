@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import '../styles/Hero.css'
 import HeroDetailModal from './HeroDetailModal'
 
@@ -110,16 +110,15 @@ const CARD_DATA = [
   </p>
 </div>
 
-            <div className="hero-marquee" aria-label="Pengumuman">
-              <div className="hero-marquee-track">
-                {/* Render 2x supaya loop scroll -50% mulus tanpa gap */}
-                {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, i) => (
-                  <span className="hero-marquee-item" key={`${item}-${i}`}>
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </div>
+<div className="hero-marquee" aria-label="Pengumuman">
+  <div className="hero-marquee-track">
+    {Array.from({ length: 6 }).map((_, i) => (
+      <span className="hero-marquee-item" key={i}>
+        {MARQUEE_ITEMS[0]}
+      </span>
+    ))}
+  </div>
+</div>
           </div>
 
         </div>
@@ -232,17 +231,29 @@ function NowPlayingRequestCard({ data }) {
 // di Instagram, dan ga ada modal yang kebuka pas card di-klik.
 function InstagramFeedCard({ posts }) {
   const [index, setIndex] = useState(0)
+  const [autoplay, setAutoplay] = useState(true)
   const total = posts.length
+
+  useEffect(() => {
+    if (!autoplay) return
+    const interval = setInterval(() => {
+      setIndex((i) => (i + 1) % total)
+    }, 4000)
+    return () => clearInterval(interval)
+  }, [autoplay, total])
 
   const prev = (e) => {
     e.stopPropagation()
+    setAutoplay(false)
     setIndex((i) => (i - 1 + total) % total)
   }
 
   const next = (e) => {
     e.stopPropagation()
+    setAutoplay(false)
     setIndex((i) => (i + 1) % total)
   }
+
 
   const titleLines = ['Cek post-post terbaru', 'kami di Instagram']
 
@@ -349,18 +360,29 @@ function InstagramFeedCard({ posts }) {
 }
 
 function HeroCard({ card, onOpen }) {
-    const [index, setIndex] = useState(0)
-    const total = card.images.length
+  const [index, setIndex] = useState(0)
+  const [autoplay, setAutoplay] = useState(true)
+  const total = card.images.length
 
-    const prev = (e) => {
-      e.stopPropagation()
-      setIndex((i) => (i - 1 + total) % total)
-    }
-
-    const next = (e) => {
-      e.stopPropagation()
+  useEffect(() => {
+    if (!autoplay) return
+    const interval = setInterval(() => {
       setIndex((i) => (i + 1) % total)
-    }
+    }, 4000)
+    return () => clearInterval(interval)
+  }, [autoplay, total])
+
+  const prev = (e) => {
+    e.stopPropagation()
+    setAutoplay(false)
+    setIndex((i) => (i - 1 + total) % total)
+  }
+
+  const next = (e) => {
+    e.stopPropagation()
+    setAutoplay(false)
+    setIndex((i) => (i + 1) % total)
+  }
 
     const titleLines = card.title.split('\n')
 
