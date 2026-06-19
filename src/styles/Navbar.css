@@ -220,9 +220,9 @@
   .drawer {
     /* dua baris: 52px row1 + ~45px row2 */
     padding-top: 97px;
-    width: 92vw;
+    width: 100vw;
     /* pakai dvh agar tetap akurat saat keyboard mobile muncul/hilang */
-    height: 100dvh;
+    height: 90dvh;
   }
 }
 

@@ -30,7 +30,7 @@
   min-width: 0;
 }
 
-/* ── Kolom kiri: Upcoming Event ── */
+/* ── Kolom kiri (sekarang berisi Upcoming Event) ── */
 
 .hero-header-left {
   display: flex;
@@ -49,16 +49,8 @@
 
 .hero-upcoming-title {
   font-family: 'JetBrains Mono', monospace;
-
-  font-size: clamp(28px, 8vw, 48px);
-  
-  
-  
   margin: 0;
   width: 100%;
- 
-
- 
   font-size: clamp(20px, 8vw, 80px);
   line-height: .9;
   font-weight: 700;
@@ -75,7 +67,7 @@
   margin: 0;
 }
 
-/* ── Kolom kanan: Request Lagu + running text ── */
+/* ── Kolom kanan: wrapper Upcoming Event + running text ── */
 
 .hero-header-right {
   display: flex;
@@ -84,34 +76,6 @@
   gap: 16px;
   width: 100%;
   min-width: 0;
-}
-
-.hero-request-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-
-  padding: 14px 22px;
-
-  background: #FF5A00;
-  color: #0A0A0A;
-
-  text-decoration: none;
-
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: .12em;
-
-  text-transform: uppercase;
-  white-space: nowrap;
-
-  transition: .25s;
-}
-
-.hero-request-cta:hover {
-  transform: translateY(-2px);
-  background: #ff6a1a;
 }
 
 /* Running text — placement iklan brand (sementara diisi PSA) */
@@ -153,6 +117,212 @@
 }
 
 
+/* ── Now Playing + Request card (kolom kiri baru) ──── */
+
+.hero-nowplaying {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  background: radial-gradient(120% 140% at 30% 0%, #5a1414 0%, #1a0707 55%, #0d0303 100%);
+  border: 1px solid rgba(255, 90, 0, 0.25);
+}
+
+.hero-nowplaying-player {
+  display: flex;
+  gap: 18px;
+  padding: 20px;
+}
+
+.hero-nowplaying-artwork {
+  flex-shrink: 0;
+  width: 130px;
+  height: 130px;
+  border-radius: 10px;
+  background: linear-gradient(160deg, #2a2a2a 0%, #0a0a0a 100%);
+}
+
+.hero-nowplaying-artwork-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-nowplaying-info {
+  align-items: center;
+  margin: 0 auto;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  min-width: 0;
+  display: flex;
+  gap: 4px;
+}
+
+.hero-nowplaying-device {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  color: rgba(232, 232, 232, 0.55);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.hero-nowplaying-device-icon {
+  font-size: 9px;
+}
+
+.hero-nowplaying-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  margin: 2px 0 0;
+  line-height: 1.2;
+}
+
+.hero-nowplaying-artist {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px;
+  color: rgba(232, 232, 232, 0.6);
+  margin: 0 0 8px;
+}
+
+.hero-nowplaying-progress-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hero-nowplaying-time {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 15px;
+  color: rgba(232, 232, 232, 0.5);
+  flex-shrink: 0;
+}
+
+.hero-nowplaying-progress-track {
+  flex: 1;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+}
+
+.hero-nowplaying-progress-fill {
+  height: 100%;
+  background: #f0a0a0;
+  border-radius: 2px;
+}
+
+.hero-nowplaying-lyric {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-style: italic;
+  line-height: 1.4;
+  color: rgba(232, 232, 232, 0.45);
+  margin: 8px 0 0;
+}
+
+.hero-nowplaying-controls {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 10px;
+}
+
+.hero-nowplaying-btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 13px;
+  cursor: default;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-nowplaying-btn--play {
+  font-size: 15px;
+}
+
+.hero-nowplaying-btn--airplay {
+  margin-left: auto;
+  color: rgba(232, 232, 232, 0.6);
+  font-size: 14px;
+}
+
+.hero-nowplaying-volume-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.hero-nowplaying-volume-icon {
+  font-size: 9px;
+  opacity: 0.6;
+}
+
+.hero-nowplaying-volume-track {
+  flex: 1;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+}
+
+.hero-nowplaying-volume-fill {
+  width: 70%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 2px;
+}
+
+/* ── Banner request lagu ── */
+
+.hero-nowplaying-request {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-align: center;
+  text-decoration: none;
+  background: #FF5A00;
+  color: #0A0A0A;
+  padding: 22px 24px 18px;
+  transition: background 0.2s ease;
+}
+
+.hero-nowplaying-request:hover {
+  background: #ff6a1a;
+}
+
+.hero-nowplaying-request-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(18px, 2.6vw, 26px);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.hero-nowplaying-request-note {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+
 /* ── Grid — dua card berdampingan ────────────── */
 
 .hero-grid {
@@ -181,62 +351,16 @@
 .hero-card:last-child  { border-radius: 0 4px 0 0; }
 
 
-/* ── Card Instagram (kolom kiri, widget Behold) ──── */
+/* ── Card Instagram (kolom kiri) — struktur disamain
+   persis sama HeroCard di kanan (image-stack + overlay
+   + arrow + dots), bedanya cuma image-nya dibungkus <a>
+   yang ngarah ke post asli di Instagram. ──── */
 
-.hero-card--instagram {
-  cursor: default;
-  display: flex;
-  flex-direction: column;
-  background: #111;
-  padding: 20px;
-}
-
-.hero-card-instagram-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 16px;
-  flex-shrink: 0;
-}
-
-.hero-card-ig-link {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(232, 232, 232, 0.6);
-  text-decoration: none;
-  white-space: nowrap;
-  transition: color 0.2s ease;
-}
-
-.hero-card-ig-link:hover {
-  color: #FF5A00;
-}
-
-.hero-card-instagram-desc {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 20px;
-  letter-spacing: 0.02em;
-  line-height: 1.5;
-  color: rgba(224, 212, 212, 0.959);
-  margin: 16px 0 0;
-  flex-shrink: 0;
-}
-
-.hero-card-instagram-body {
-  flex: 1;
-  min-height: 0;
-  overflow-y: auto;
-  border-radius: 4px;
-}
-
-/* Behold widget mengikuti tema gelap lewat CSS variables —
-   styling lengkap tetap diatur dari dashboard Behold. */
-.hero-card-instagram-body behold-widget {
+.hero-card-instagram-link {
+  position: absolute;
+  inset: 0;
   display: block;
-  width: 100%;
+  z-index: 0;
 }
 
 
@@ -278,6 +402,10 @@
     transparent         100%
   );
   z-index: 1;
+  /* Overlay cuma visual, jangan nangkep klik —
+     biar klik di area gambar tetap nembus ke link
+     Instagram (.hero-card-instagram-link) di bawahnya. */
+  pointer-events: none;
 }
 
 
@@ -442,15 +570,23 @@
     align-items: stretch;
   }
 
-  .hero-request-cta {
-    align-self: flex-start;
-    padding: 12px 18px;
-    font-size: 10px;
-  }
-
   .hero-marquee-item {
     font-size: 10px;
     padding-right: 36px;
+  }
+
+  .hero-nowplaying-player {
+    padding: 16px;
+    gap: 14px;
+  }
+
+  .hero-nowplaying-artwork {
+    width: 100px;
+    height: 100px;
+  }
+
+  .hero-nowplaying-request {
+    padding: 18px 18px 14px;
   }
 
   .hero-grid {
@@ -508,13 +644,6 @@
     gap: 14px;
   }
 
-  .hero-request-cta {
-    width: 100%;
-    justify-content: center;
-    padding: 13px 20px;
-    font-size: 10.5px;
-  }
-
   .hero-marquee {
     padding: 10px 0;
   }
@@ -522,6 +651,34 @@
   .hero-marquee-item {
     font-size: 10px;
     padding-right: 32px;
+  }
+
+  /* Now Playing card — stack artwork di atas info di mobile */
+  .hero-nowplaying {
+    border-radius: 16px;
+  }
+
+  .hero-nowplaying-player {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+  }
+
+  .hero-nowplaying-artwork {
+    width: 100%;
+    height: 180px;
+  }
+
+  .hero-nowplaying-title {
+    font-size: 15px;
+  }
+
+  .hero-nowplaying-request {
+    padding: 18px 16px 14px;
+  }
+
+  .hero-nowplaying-request-title {
+    font-size: clamp(17px, 5.5vw, 22px);
   }
 
   /* Stack cards vertikal di mobile */
@@ -585,15 +742,17 @@
     font-size: 10px;
   }
 
-  .hero-request-cta {
-    padding: 12px 18px;
-    font-size: 10px;
-    letter-spacing: .1em;
-  }
-
   .hero-marquee-item {
     font-size: 9.5px;
     padding-right: 24px;
+  }
+
+  .hero-nowplaying-artwork {
+    height: 150px;
+  }
+
+  .hero-nowplaying-lyric {
+    display: none;
   }
 
   .hero-grid {
