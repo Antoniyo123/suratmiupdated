@@ -176,9 +176,15 @@ export default function Navbar() {
 
         {/* ── Row 1: Logo + Chat btn ── */}
         <div className="navbar-row1">
-        <div className="navbar-logo">
+        <a
+  href="https://www.youtube.com/watch?v=eFSsQAhulLc"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="navbar-logo"
+  title="Jangan diklik 👀"
+>
   <img src="/suratmiFm.png" alt="SuratmiFM" />
-</div>
+</a>
           <div className="chat-btn-wrap">
             <button
               className={`chat-btn${chatOpen ? ' open' : ''}`}
