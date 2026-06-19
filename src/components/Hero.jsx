@@ -35,8 +35,8 @@ const NOW_PLAYING = {
 // 3. Isi pasangan image+url di array di bawah (boleh tambah berapa pun)
 const INSTAGRAM_POSTS = [
   {
-    image: '/instagram/post1.png',
-    url: 'https://www.instagram.com/p/DYASTZPPqmf/',
+    image: '/instagram/post5.png',
+    url: 'https://www.instagram.com/p/DZuJ3t6zjyo/',
   },
   {
     image: '/instagram/post2.png',
@@ -45,6 +45,10 @@ const INSTAGRAM_POSTS = [
   {
     image: '/instagram/post3.png',
     url: 'https://www.instagram.com/p/DZuvlALPD9H/',
+  },
+  {
+    image: '/instagram/post4.png',
+    url: 'https://www.instagram.com/p/DYm0czMvQWL/',
   },
   {
     image: '/instagram/post4.png',
