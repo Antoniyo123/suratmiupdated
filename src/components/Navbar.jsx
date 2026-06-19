@@ -218,7 +218,7 @@ export default function Navbar() {
             {isPlaying ? '❙❙' : '▶'}
           </button>
           {/* ganti src ini dengan URL stream / lagu asli */}
-          <audio ref={audioRef} src="/audio/now-playing.mp3" preload="none" />
+          <audio ref={audioRef} src="/audio/askaba.mp3" preload="none" />
         </div>
 
       </header>
