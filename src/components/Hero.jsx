@@ -6,8 +6,8 @@ import HeroDetailModal from './HeroDetailModal'
 // Ganti/sambungkan ke data dinamis nanti.
 const UPCOMING_EVENT = {
   label: 'Upcoming Event',
-  title: 'Suratmi FM X The Perompaks',
-  meta: 'Sabtu, 21 Jun · 21:00 WIB · Lucy Beer Mart Blok M',
+  title: 'Suratmi FM X The Perompaks X Puero',
+  meta: 'Saturday, 20 june 2026 · 21:00 WIB · Puero',
 }
 
 // ── Data statis: Running text PSA (kolom kanan) ──
@@ -68,14 +68,7 @@ const CARD_DATA = [
 
           {/* ── Kolom kanan: Request Lagu + running text ── */}
           <div className="hero-header-right">
-            <a
-              href="#song-request"
-              className="hero-request-cta"
-            >
-              REQUEST A SONG →
-            </a>
-
-            <div className="hero-marquee" aria-label="Pengumuman">
+          <div className="hero-marquee" aria-label="Pengumuman">
               <div className="hero-marquee-track">
                 {/* Render 2x supaya loop scroll -50% mulus tanpa gap */}
                 {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, i) => (
@@ -85,6 +78,14 @@ const CARD_DATA = [
                 ))}
               </div>
             </div>
+            <a
+              href="#song-request"
+              className="hero-request-cta"
+            >
+              REQUEST A SONG →
+            </a>
+
+            
           </div>
 
         </div>
