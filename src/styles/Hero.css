@@ -40,11 +40,45 @@
 }
 
 .hero-eyebrow-label {
+  flex-shrink: 0;
   font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: #FF5A00;
+}
+
+.hero-eyebrow-marquee {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.hero-eyebrow-marquee-track {
+  display: inline-flex;
+  animation: hero-eyebrow-marquee-scroll 8s linear infinite;
+  will-change: transform;
+}
+
+.hero-eyebrow-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #FF5A00;
+  padding-right: 32px;
+  flex-shrink: 0;
+}
+
+@keyframes hero-eyebrow-marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-eyebrow-marquee-track {
+    animation: none;
+  }
 }
 
 .hero-upcoming-title {

@@ -73,41 +73,46 @@ export default function RequestsModal({ onClose }) {
                 <span className="request-date">{formatDate(req.created_at)}</span>
               </div>
 
-              <div className="request-song">
-                <span className="request-song-title">{req.song_title}</span>
-                <span className="request-song-sep">—</span>
-                <span className="request-song-artist">{req.artist}</span>
-              </div>
+              {/* Bubble wrapper: semua konten request masuk ke sini */}
+              <div className="request-bubble">
 
-              <div className="request-sender">
-                <span className="request-sender-name">{req.name}</span>
-              </div>
-
-              {(req.from_name || req.to_name) && (
-                <div className="request-dedication">
-                  <span className="dedication-pill">
-                    {req.from_name && (
-                      <span>
-                        <span className="dedication-label">dari</span>
-                        {req.from_name}
-                      </span>
-                    )}
-                    {req.from_name && req.to_name && (
-                      <span className="dedication-arrow">→</span>
-                    )}
-                    {req.to_name && (
-                      <span>
-                        <span className="dedication-label">untuk</span>
-                        {req.to_name}
-                      </span>
-                    )}
-                  </span>
+                <div className="request-sender">
+                  <span className="request-sender-name">{req.name}</span>
                 </div>
-              )}
 
-              {req.message && (
-                <blockquote className="request-message">{req.message}</blockquote>
-              )}
+                <div className="request-song">
+                  <span className="request-song-title">{req.song_title}</span>
+                  <span className="request-song-sep">—</span>
+                  <span className="request-song-artist">{req.artist}</span>
+                </div>
+
+                {(req.from_name || req.to_name) && (
+                  <div className="request-dedication">
+                    <span className="dedication-pill">
+                      {req.from_name && (
+                        <span>
+                          <span className="dedication-label">dari</span>
+                          {req.from_name}
+                        </span>
+                      )}
+                      {req.from_name && req.to_name && (
+                        <span className="dedication-arrow">→</span>
+                      )}
+                      {req.to_name && (
+                        <span>
+                          <span className="dedication-label">untuk</span>
+                          {req.to_name}
+                        </span>
+                      )}
+                    </span>
+                  </div>
+                )}
+
+                {req.message && (
+                  <blockquote className="request-message">{req.message}</blockquote>
+                )}
+
+              </div>
 
             </div>
           ))}

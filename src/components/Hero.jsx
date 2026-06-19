@@ -91,17 +91,24 @@ const CARD_DATA = [
 
           {/* ── Kolom kanan: Upcoming Event + running text ── */}
           <div className="hero-header-right">
-            <div className="hero-header-left">
-              <span className="hero-eyebrow-label">
-                {UPCOMING_EVENT.label}
-              </span>
-              <h2 className="hero-upcoming-title">
-                {UPCOMING_EVENT.title}
-              </h2>
-              <p className="hero-upcoming-meta">
-                {UPCOMING_EVENT.meta}
-              </p>
-            </div>
+          <div className="hero-header-left">
+          <div className="hero-eyebrow-marquee" aria-label={UPCOMING_EVENT.label}>
+  <div className="hero-eyebrow-marquee-track">
+    {Array.from({ length: 8 }).map((_, i) => (
+      <span className="hero-eyebrow-label" key={i}>
+        {UPCOMING_EVENT.label}
+      </span>
+    ))}
+  </div>
+</div>
+
+  <h2 className="hero-upcoming-title">
+    {UPCOMING_EVENT.title}
+  </h2>
+  <p className="hero-upcoming-meta">
+    {UPCOMING_EVENT.meta}
+  </p>
+</div>
 
             <div className="hero-marquee" aria-label="Pengumuman">
               <div className="hero-marquee-track">
