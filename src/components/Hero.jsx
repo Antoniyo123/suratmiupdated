@@ -7,8 +7,8 @@ import HeroDetailModal from './HeroDetailModal'
 // Ganti/sambungkan ke data dinamis nanti.
 const UPCOMING_EVENT = {
   label: 'Upcoming Event',
-  title: 'Suratmi FM X The Perompaks X Puero',
-  meta: 'Saturday, 20 june 2026 · 21:00 WIB · Puero',
+  title: 'Suratmi FM x BBB x The Perompaks',
+  meta: 'Saturday, 27 june 2026 · 22:00 WIB · Lucy Beer Mart Blok M',
 }
 
 // ── Data statis: Running text PSA ──
